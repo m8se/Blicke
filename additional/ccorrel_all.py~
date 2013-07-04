@@ -139,11 +139,11 @@ plot(maxs0,maxs2,'o')
 #Klassifiziere die Daten mit der HC Methode
 
 print "Laber:",maxs0[3],maxs2[3]
-maxs0=array(maxs0)
-maxs2=array(maxs2)
-vector_list=zeros([len(maxs0),2])
-for k in range(len(maxs0)):
-	vector_list[k]=[maxs0[k],maxs2[k]]
-
-gruppen_erzeugen(vector_list)
+Maxs0=array(maxs0)
+Maxs2=array(maxs2)
+vector_list=zeros([len(Maxs0),2])
+for k in range(len(Maxs0)):
+	vector_list[k]=[Maxs0[k],Maxs2[k]]
+print vector_list
+#gruppen_erzeugen(vector_list)
 show()

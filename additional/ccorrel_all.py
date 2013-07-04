@@ -144,6 +144,6 @@ Maxs2=array(maxs2)
 vector_list=zeros([len(Maxs0),2])
 for k in range(len(Maxs0)):
 	vector_list[k]=[Maxs0[k],Maxs2[k]]
-
+print vector_list
 gruppen_erzeugen(vector_list)
 show()
