@@ -3,8 +3,6 @@ draw.py: 		Bibliothek zum Generieren von Klassifikationsspektren
 Markov.py:		Dyadnsimulation mittels Markov Modell
 	
 staytime.py: 		Untersuchung der Zustandsänderungsraten vor und nach Stress
-	
-Transition.py:		Generierung von Übergangsmatrizen
 
 vis_dyade.py:		Auswertungsautomatisierung
 				- Darstellung der Dyadenzeitreihen

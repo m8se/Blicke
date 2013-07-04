@@ -8,6 +8,7 @@ vis_dyade.py:		Auswertungsautomatisierung
 				- Darstellung der Dyadenzeitreihen
 				- Bildung der Kreuzkorrelation
 
+
 correl/correl.py:	Untersuchung Korrelationskoeffizienten der Mutter Kind Zeitreihen
 			und Visualisierung
 
