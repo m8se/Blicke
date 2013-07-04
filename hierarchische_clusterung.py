@@ -37,8 +37,9 @@ def nnachbar(array):# Der array sollte die Aufenthaltswahrscheinlichkeiten entha
 		stelle=range(len(norm[:,0]))
 		del(stelle[i])
 		for l in range(len(norm[0,:])-1):
-			tmp=[2,0,0]
+			tmp=[0,0,0]
 			point=0
+			tmp[0]=norm[i,stelle[0]]+1
 			for k in stelle:
 				if tmp[0]>norm[i,k]:
 					tmp[0]=norm[i,k]
@@ -49,6 +50,7 @@ def nnachbar(array):# Der array sollte die Aufenthaltswahrscheinlichkeiten entha
 				nachbar[i,l,0]=tmp[1]
 				nachbar[i,l,1]=tmp[0]
 				del(stelle[tmp[2]])
+	print 'nachbar', nachbar, 'end'
 	return nachbar				
 ###########
 #Durchfuehrung der hierarchischen clusterung
