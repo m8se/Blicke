@@ -1,0 +1,15 @@
+Markov.py:		Dyadnsimulation mittels Markov Modell
+	
+staytime.py: 		Untersuchung der Zustandsänderungsraten vor und nach Stress
+	
+Transition.py:		Generierung von Übergangsmatrizen
+
+vis_dyade.py:		Auswertungsautomatisierung
+				- Darstellung der Dyadenzeitreihen
+				- Bildung der Kreuzkorrelation
+
+correl/correl.py:	Untersuchung Korrelationskoeffizienten der Mutter Kind Zeitreihen
+			und Visualisierung
+
+SVM/SVM.py		Umsetzung der SVM mit linearer Kernelfunktion, einschließlich
+			Beispielklassifikation
