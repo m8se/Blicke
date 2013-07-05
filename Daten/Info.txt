@@ -1,0 +1,15 @@
+id_lst[Zählnummer des Mutter/Kind Paares]
+	enhält die ID Nummern
+	Zählnummer des Mutter/Kind Paares= 0, 1, ..., (Anzahl der Probanden-1)
+zeitreihen[Zählnummer des Mutter/Kind Paares,Stresslevel,Zeitreihe]
+	Stresslevel: 	1 = ohne Stress
+			2 = vorerst nich von Interesse
+			3 = mit Stress
+	Zeitreihe:
+		Vektoren im 4X4 Raum
+		Zeitabstand zwischen zwei aufeinander folgenden Vektoren = 0.04 s 
+
+	
+	Zustände:
+		1-16: sind die Zustände
+		
