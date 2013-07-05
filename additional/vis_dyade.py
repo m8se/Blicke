@@ -7,7 +7,13 @@ import pickle
 from pylab import *
 import sys
 
+if(len(sys.argv)!=2):
+	print "Falscher Programmaufruf:\npython vis_dyade.py <dyaden_nr>"
+	#print sys.argv
+	exit()
+
 dyade_in=sys.argv[1]
+
 
 f2=open("../Daten/zeitreihen.data");
 zeitreihen=pickle.load(f2)

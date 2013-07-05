@@ -1,16 +1,21 @@
 draw.py: 		Bibliothek zum Generieren von Klassifikationsspektren
+				wird verwendet bei der Clusterung nach relativer Aufenthaltshäufigkeit
 	
 Markov.py:		Dyadnsimulation mittels Markov Modell
-	
+				Aufruf mit: python Markov.py <dyaden_nr>
+					
 staytime.py: 		Untersuchung der Zustandsänderungsraten vor und nach Stress
+					Aufruf mit: python staytime.py
 
-vis_dyade.py:		Auswertungsautomatisierung
+vis_dyade.py:	Auswertungsautomatisierung
 				- Darstellung der Dyadenzeitreihen
 				- Bildung der Kreuzkorrelation
 
 
 correl/correl.py:	Untersuchung Korrelationskoeffizienten der Mutter Kind Zeitreihen
 			und Visualisierung
+			
+
 
 SVM/SVM.py		Umsetzung der SVM mit linearer Kernelfunktion, einschließlich
 			Beispielklassifikation

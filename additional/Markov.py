@@ -22,12 +22,27 @@ def print_ueb_matrix(matrix):
 		for b in range(16):
 			print matrix[a,b],
 
+if(len(sys.argv)!=2):
+	print "Falscher Programmaufruf:\nUse:python Markov.py <dyaden_nr>"
+	#print sys.argv
+	exit()
+
+
 f=open("../Daten/id_lst.data");
 ids=pickle.load(f)
-#print ids;
 
 f2=open("../Daten/zeitreihen.data");
 zeitreihen=pickle.load(f2)
+dyade_num=len(zeitreihen)
+
+dyaden_ids=[]
+for i in range(dyade_num):
+	dyaden_ids+=[ids[i]]
+dyade=dyaden_ids.index(str(sys.argv[1]))
+
+#print ids;
+
+
 #print zeitreihen
 
 
@@ -77,7 +92,6 @@ show()
 
 # Einlesen der Aufenthaltswahrscheinlichkeiten
 
-dyade=10
 f=open("../Daten/rel_aufenthalt.data")
 start_vectors=pickle.load(f)
 

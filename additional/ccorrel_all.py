@@ -156,17 +156,7 @@ for g in groups:
             break
 
 
-
-ordered_groups = sorted(trimmed_groups, key=len)
-ordered_groups.reverse()
-
-# print groups
-for g in ordered_groups:
-    print "[",
-    for el in g:
-        print ids[int(el)],
-    print "]"
-
+ 
 N_max=10 # maximal anzuzeigende Gruppen
 for g in range(N_max):
     color=rand(3,1)
