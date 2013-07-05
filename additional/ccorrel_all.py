@@ -145,5 +145,33 @@ vector_list=zeros([len(Maxs0),2])
 for k in range(len(Maxs0)):
 	vector_list[k]=[Maxs0[k],Maxs2[k]]
 print vector_list
-gruppen_erzeugen(vector_list)
+groups=gruppen_erzeugen(vector_list)
+
+trimmed_groups=[]
+
+for g in groups:
+    for i in range(len(g)):
+        if(g[i]==-1):
+            trimmed_groups+=[g[:i-1]]
+            break
+
+
+
+ordered_groups = sorted(trimmed_groups, key=len)
+ordered_groups.reverse()
+
+# print groups
+for g in ordered_groups:
+    print "[",
+    for el in g:
+        print ids[int(el)],
+    print "]"
+
+N_max=10 # maximal anzuzeigende Gruppen
+for g in range(N_max):
+    color=rand(3,1)
+    for i in ordered_groups[g]:
+        scatter(maxs0[int(i)], maxs2[int(i)], s=g*80,edgecolors=color, facecolors='none', linewidths=2, label='Class 2')
+
+
 show()
