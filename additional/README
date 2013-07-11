@@ -15,7 +15,12 @@ vis_dyade.py:	Auswertungsautomatisierung
 correl/correl.py:	Untersuchung Korrelationskoeffizienten der Mutter Kind Zeitreihen
 			und Visualisierung
 			
+xcorrel.py:		Darstellung der Kreuzkorrelationsfunktion für eine Dyade, mit Bestimmung des Maximums
+					Aufruf mit: python xcorrel.py <dyaden_nr>
+					
+xcorrel_all.py: Abbildung der bestimmten XCorr Maxima vor und nach Stress mit anschließender Klassifizierung nach HC Methode
+				Aufruf mit: python xcorrel_all.py
 
 
 SVM/SVM.py		Umsetzung der SVM mit linearer Kernelfunktion, einschließlich
-			Beispielklassifikation
+				Beispielklassifikation
