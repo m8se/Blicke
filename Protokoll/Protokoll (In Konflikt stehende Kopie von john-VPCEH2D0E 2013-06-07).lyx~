@@ -1,0 +1,1294 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass scrartcl
+\use_default_options true
+\maintain_unincluded_children false
+\language ngerman
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip smallskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Analyse & Klassifikation von Blickmustern
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+[2cm]
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Abbildung
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subtitle
+Auf Basis einer Datenerhebung der Universität Hamburg 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+[10cm]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+\noindent
+David Klehr 757914, Jörn Malich 752312
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Gegenstand
+\end_layout
+
+\begin_layout Standard
+In dieser Arbeit werden von Psychologen der Universität Hamburg erhobene
+ Daten ausgewertet.
+ In den Untersuchungen wurden die Blickmuster von Mutter Kind Paaren jeweils
+ für eine stressfreie als auch für eine Situation unter äußerem Stresseinfluss
+ dokumentiert.
+ Die Blicke zu einen bestimmten Zeitpunkt wurden bereits in jeweils vier
+ Zustände für die Mutter und das Kind eingeteilt.
+ Bei den Müttern lag jeweils ein uns nicht bekanntes Krankheitsbild vor.
+ Zur Einteilung der Dyaden in Gruppen wurden Kenngrößen wie Aufenthaltswahrschei
+nlichkeit, Korrelation und Zustandsraten für unterschiedliche Zeitreihen
+ untersucht.
+ Hierzu wurde unter anderem die Methode der hierarchischen Clusterung eingeführt.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+etwas hintugefügt
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Dyadenklassifikation anhand der Aufenthaltswahrscheinlichkeit
+\end_layout
+
+\begin_layout Subsection
+Grundlagen
+\end_layout
+
+\begin_layout Standard
+Kombiniert man die jeweils vier möglichen Mutter und Kind Zustände, so erhält
+ man 16 (4
+\begin_inset Formula $\times$
+\end_inset
+
+4) mögliche Zustände, die den Gesamtzustand des Systems zu einem bestimmten
+ Zeitpunkt beschreiben.
+\begin_inset Formula 
+\[
+Z(t)\in\{z_{1},z_{2},...,z_{15},z_{16}\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Anhand einer Zeitreihe lässt sich für jede Dyade eine empirische Aufenthaltswahr
+scheinlichkeit 
+\begin_inset Formula $P(z_{i})$
+\end_inset
+
+ für den Gesamtzustand bestimmen.
+ Die Aufenthaltswahrscheinlichkeiten werden auf 1 normiert.
+ 
+\begin_inset Formula $\sum_{i=1}^{16}P(z_{i})=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Aufenthaltswahrscheinlichkeiten einer Zeitreihe können einen Ortsvektor
+ 
+\begin_inset Formula $\vec{P}$
+\end_inset
+
+ im 16-dimesnionalen P-Raum definieren 
+\begin_inset Formula $P_{i}=P(z_{i})$
+\end_inset
+
+.
+ Nun wird die Annahme aufgestellt, dass der 
+\begin_inset Formula $\vec{P}$
+\end_inset
+
+ Vektor eine relevante Aussage über die Dyade trifft.
+ 
+\end_layout
+
+\begin_layout Subsection
+Methode der Hierarchischen Clusterung
+\end_layout
+
+\begin_layout Standard
+Ziel der hier definierten Methode ist es, die Dyaden in hierarchisch ineinander
+ gestaffelte Gruppen einzuteilen, d.h.
+ eine Gruppe kann jeweils eine oder mehrere Untergruppen enthalten.
+ Um die Komplexität des Ergebnisses zu begrenzen, soll eine Überlappung
+ verschiedener Gruppen vermieden werden.
+\end_layout
+
+\begin_layout Standard
+Als Kriterium für die Ähnlichkeit zweier 
+\begin_inset Formula $\vec{P}$
+\end_inset
+
+-Vektoren wurde ihre Nähe im P-Raum gewählt.
+ Der Abstand d zweier Vektoren 
+\begin_inset Formula $\vec{P}(x)$
+\end_inset
+
+ und 
+\begin_inset Formula $\vec{P}(y)$
+\end_inset
+
+ wird hier mit der euklidischen Norm definiert.
+ 
+\begin_inset Formula 
+\[
+d=\sqrt{\sum_{i}[P_{i}(x)-P_{i}(y)]^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nun wird für den 
+\begin_inset Formula $\vec{P}$
+\end_inset
+
+ -Vektor jeder Dyade eine nach dem Abstand sortierte Liste der Nachbarn
+ aufgestellt.
+ Jetzt werden die Dyaden nach folgendem Verfahren in Gruppen eingeteilt:
+ Zunächst wird eine beliebige Dyade (hier als x bezeichnet) gewählt.
+ Der Abstand dieser Dyade zu ihrem nächsten Nachbarn (hier als y bezeichnet)
+ wird als Maßstab m zur Gruppeneinteilung verwendet.
+ 
+\begin_inset Formula 
+\[
+m=d(x,y)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die hier gebildete Gruppe besteht zunächst nur aus den Dyaden x und y.
+ Nun wird überprüft, ob die Dyade y Nachbarn mit einem geringeren Abstand
+ als m aufweist.
+ Sollte dies der Fall sein, so werden diese Nachbarn mit in die Gruppe aufgenomm
+en.
+ Auch die neu aufgenommenen Gruppenmitglieder werden auf Nachbarn mit einem
+ Abstand kleiner m überprüft.
+ Kann kein Nachbar eines der Gruppenmitglieder mit einem Abstand kleiner
+ m ermittelt werden, so wird die Gruppe geschlossen.
+ Dieses Procedere muss für jede Dyade durchgeführt werden.
+\end_layout
+
+\begin_layout Standard
+In Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Beispiel-einer-hierarchischen"
+
+\end_inset
+
+ ist die hierarchische Clusterung (HC) anhand von Punkten im zweidimensionalen
+ Raum veranschaulicht.
+ Die Clusterbildung findet hier für den Punkt 2 statt.
+ Zur vollständigen Einteilung in Cluster muss das Verfahren auch auf die
+ Punkte 1, 3, und 4 angewandt werden.
+ In Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Beispiel-einer-hierarchischen"
+
+\end_inset
+
+.2 wird der charakteristische Abstand für die Clusterbildung anhand von Punkt
+ 2 abgebildet.
+ In den Abbildungen 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Beispiel-einer-hierarchischen"
+
+\end_inset
+
+.3 und 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Beispiel-einer-hierarchischen"
+
+\end_inset
+
+.4 gelangen die Punkte 1 und 3 in den Cluster.
+ Punkt 4 befindet sich zu keinem der Clusterpunkte in einem Abstand geringer
+ dem des charakteristischen Anstandes und ist somit nicht Teil des Clusters.
+ Wendet man die hierarchische Clusterung auch auf die Punkte 1,3 und 4 an,
+ so erhält man folgende Cluster:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{1}=\{1,3\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{2}=\{1,2,3\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{3}=\{1,3\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{4}=\{1,2,3,4\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Da 
+\begin_inset Formula $C_{1}$
+\end_inset
+
+
+\begin_inset Formula $C_{3}$
+\end_inset
+
+entspricht, würde man für die die vier Punkte 3 unterschiedliche Cluster
+ erhalten, wobei 
+\begin_inset Formula $C_{1}$
+\end_inset
+
+ eine Untermenge von 
+\begin_inset Formula $C_{3}$
+\end_inset
+
+ ist, welcher wiederum eine Untermenge von 
+\begin_inset Formula $C_{4}$
+\end_inset
+
+ist.
+\end_layout
+
+\begin_layout Standard
+Die hierarchische Clusterung im höherdimensionalen Raum verläuft analog.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename /home/john/Dropbox/cp13/Kind-Mutti/CP/Blicke/Bilder/hir_c_0.png
+	lyxscale 10
+	scale 35
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/john/Dropbox/cp13/Kind-Mutti/CP/Blicke/Bilder/hir_c_1.png
+	lyxscale 10
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename /home/john/Dropbox/cp13/Kind-Mutti/CP/Blicke/Bilder/hir_c_2.png
+	lyxscale 10
+	scale 35
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/john/Dropbox/cp13/Kind-Mutti/CP/Blicke/Bilder/hir_c_3.png
+	lyxscale 10
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Beispiel-einer-hierarchischen"
+
+\end_inset
+
+Beispiel einer hierarchischen Clusterung für den Punkt 2 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Anwendung
+\end_layout
+
+\begin_layout Standard
+In den folgenden Abbildungen sind die Ergebnisse der hierarchischen Clusterung
+ grafisch dargestellt.
+ Zu unterst sind die großen Obergruppen dargestellt.
+ Oberhalb einer Obergruppe befinden sich jeweils die kleineren Teilgruppen.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename ../Bilder/stress0spektrumschnitt.png
+	lyxscale 10
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Dyaden-Gruppen-ohne"
+
+\end_inset
+
+Dyaden Gruppen ohne Stress
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename ../Bilder/stress1spektrumschnitt.png
+	lyxscale 10
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Dyaden Gruppen unter Stress
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\noindent
+Klassifikation mithilfe der SVM Methode
+\end_layout
+
+\begin_layout Standard
+\noindent
+Support Vector Machines werden für die automatisierte Klassifizierung von
+ Messdaten verwendet.
+ Hierfür werden Testdaten mit bereits vorgenommener Klassifizierung eingelesen.
+ Die Einordnung erfolgt durch Erzeugung von Hyperebenen im Zustandsraum
+ in der Weise, dass der Abstand von Punkten mit unterschiedlichen Klassen
+ maximal wird.
+ Durch Verwendung von entsprechenden Kernelfunktionen im höherdimensionalen
+ Raum als der des Zustandsraums können sogar nichtlineare Trennungsmannigfaltigk
+eiten erzeugt werden.
+ Für die Umsetzung wurde die Python Bibliothek scikit-learn verwendet.
+ Um sich die Möglichkeiten von SVM vorzustellen, sei hier ein Beispiel dargestel
+lt.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/john/Dropbox/cp13/Kind-Mutti/CP/Blicke/jons_stuff/SVM/ex.png
+	lyxscale 20
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Klassifikationsbeispiel mit SVM
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Hierbei besteht der Vektorraum aus 2 Komponenten und jeder Datenpunkt kann
+ in eine der 3 Klassen eingeordnet werden.
+ Diese Methode wurde auf unsere Daten angewendet.
+ Hierzu ein Beispiel:
+\end_layout
+
+\begin_layout Standard
+\noindent
+Aus dem obigen Klassifikationsspektrum wurde ein Vorschlag entnommen und
+ die SVM dementsprechend trainiert.
+ Anschließend wurden die Lerndaten von der SVM klassifiziert.
+ 
+\end_layout
+
+\begin_layout Standard
+Der Klassifikationsvorschlag mit der HC Methode:
+\end_layout
+
+\begin_layout Standard
+\align center
+[1 1 1 2 2 2 2 2 2 3 3 4 4 5 5 6 6 6 6 6 6 6 6 6 6 6 6 6 6 7 7 7 7 7 7 7
+ 7 7 7 7 7 7 7 7 7 7]
+\end_layout
+
+\begin_layout Standard
+Die SVM liefert nach entsprechendem Training:
+\end_layout
+
+\begin_layout Standard
+\align center
+[1 1 1 2 2 6 2 2 2 6 6 7 7 6 7 7 6 6 6 6 6 6 6 6 6 6 6 6 6 7 7 7 7 7 7 7
+ 7 7 7 7 7 7 7 7 7 7] 
+\end_layout
+
+\begin_layout Standard
+Man erkennt deutlich, dass die Klassen mit geringer Mächtigkeit teilweise
+ nicht mehr besetzt sind.
+ Dies ließe sich jedoch mit entsprechender Wichtung der Klassen optimieren.
+ Der Vorteil zur HC Methode besteht vor allem darin, dass sehr große Datenmengen
+ klassifiziert werden können, da der Lernprozess das Resultat durch die
+ eingeführten Hyperebenen vollständig vorgibt.
+\end_layout
+
+\begin_layout Section
+\noindent
+Untersuchung der Zustandsänderungsraten vor und nach Stresseinwirkung
+\end_layout
+
+\begin_layout Standard
+\noindent
+Das Programm staytime.py stellt für jede Dyade die Zustandsänderungsraten
+ der Mutter vor und nach Einwirkung von Stress dar.
+ Diese sind in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Zustandsänderungsrate-der-Mutter"
+
+\end_inset
+
+ übereinander abgetragen.
+ Weiterhin wurde ein Histogramm [Abb.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Histogramm-der-Änderung"
+
+\end_inset
+
+] für die absolute Änderung der Änderungsrate erzeugt.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/john/Dropbox/cp13/Kind-Mutti/CP/Blicke/jons_stuff/HistZustAend.png
+	lyxscale 10
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Histogramm-der-Änderung"
+
+\end_inset
+
+Histogramm der Änderung der Zustandsänderungsrate
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Erstaunlicherweise hat dies einen Mittelwert bei -0,02, sodass die Änderungsrate
+ sich im Mittel nicht merklich ändert.
+ Das erkennt man auch in der oberen Abbildung, da die Anzahl der Messpunkte
+ im oberen Bereich >0 der im unteren Bereich entspricht.
+ Um zu überprüfen, ob die Clusterentstehung zufällig oder begründet ist,
+ werden zufällig generierte Daten hinzugefügt.
+ Diese sind durch Kreuze im Diagramm repräsentiert.
+ Weiterhin wurde die Methode der Hierarchischen Clusterung auf die Messdaten
+ angewandt.
+ Die Anzahl der Klassen kann im Python Skript frei eingestellt werden.
+ Ein Klassifikationsvorschlag ist in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Beispielklassifikation-der-Testd"
+
+\end_inset
+
+ dargestellt.
+ Die gefundenen Klassen werden auch auf der Konsole ausgegeben.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Newpage newpage
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/john/Dropbox/cp13/Kind-Mutti/CP/Blicke/jons_stuff/ZustAendergRateVorNach.png
+	lyxscale 20
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Zustandsänderungsrate-der-Mutter"
+
+\end_inset
+
+Zustandsänderungsrate der Mutter vor und nach Stresseinwirkung
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/john/Dropbox/cp13/Kind-Mutti/CP/Blicke/jons_stuff/stytmsklsfkt.png
+	lyxscale 10
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Beispielklassifikation-der-Testd"
+
+\end_inset
+
+Beispielklassifikation der Testdaten
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\noindent
+Untersuchung der Korrelationskoeffizienten vor und nach Stresseinwirkung
+\end_layout
+
+\begin_layout Standard
+\noindent
+Für jede Dyade wurden die Korrelationskoeffizienten zwischen Mutter und
+ Kind bestimmt und in einem Diagramm abgetragen.
+ Der Korrelationskoeffizient stellt dabei ein Maß für die Synchronisationsgrad
+ einer Dyade dar.
+ Das Ergebnis ist in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Korr.koeff.-von-MuK"
+
+\end_inset
+
+ zu sehen.
+ Weiterhin wurde ein Histogramm für die Änderung der Korr.koeff.
+ erstellt (Abb.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Histogramm-der-Korr.koeff.änderu"
+
+\end_inset
+
+).
+ Der Mittelwert befindet sich bei 0,00397.
+ Es zeigt sich damit wieder keine deutliche Veränderung der Messgröße.
+ Ein Klassifikationsvorschlag ist nun die Dyaden in 2 Gruppen einzuteilen,
+ je nach dem Vorzeichen des Korr.koeffizienten.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/john/Dropbox/cp13/Kind-Mutti/CP/Blicke/jons_stuff/correl/HistAendKorr.png
+	lyxscale 10
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Histogramm-der-Korr.koeff.änderu"
+
+\end_inset
+
+Histogramm der Korr.koeff.änderung.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\noindent
+Simulation des Verhaltens einer Dyade mit Markov Modellierung
+\end_layout
+
+\begin_layout Standard
+Im Markov Modell wird die Annahme getroffen, dass ein Zustand eines Zufallsproze
+sses 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+ jeweils nur von dem vorherigen Zustand abhängig ist.
+ Mithilfe des Markov Modells lassen sich Dyaden durch die Anfangsverteilung
+ und der Übergangsmatrix beschreiben und weitere Zeitreihen für die Auswertung
+ generieren.
+ Dem Programm wird die Zeitreihe einer Mutter Kind Dyade übergeben.
+ Die Anfangsverteilung der Markov Kette wird aus den relativen Aufenthaltswahrsc
+heinlichkeiten gebildet sowie die Übergangsmatrix.
+ Die Markovkette besteht aus 16 Zuständen 
+\begin_inset Formula $S=\left\{ s_{1},\dots,s_{16}\right\} $
+\end_inset
+
+.
+ Der Markov Prozess ist vollständig durch die Anfangsverteilung 
+\begin_inset Formula $\mu_{i}=P\left(X_{0}=s_{i}\right)$
+\end_inset
+
+ definiert und der Übergangsmatrix 
+\begin_inset Formula $p_{ij}\left(t\right)$
+\end_inset
+
+.
+ Durch Erzeugung von Zufallszahlen kann damit der Zufallsprozess simuliert
+ werden.
+ Das Ergebnis für die Dyade 10 ist in Abbbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Darstellung-gemessene-Zeitreihe"
+
+\end_inset
+
+ und 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Darstellung-simulierte-Zeitreihe"
+
+\end_inset
+
+ dargestellt.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/john/Dropbox/cp13/Kind-Mutti/CP/Blicke/jons_stuff/correl/correl.png
+	lyxscale 20
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Korr.koeff.-von-MuK"
+
+\end_inset
+
+Korr.koeff.
+ von MuK vor und nach Stresseinwirkung
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename /home/john/Dropbox/cp13/Kind-Mutti/CP/Blicke/jons_stuff/Gemessene Dyade.png
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Darstellung-gemessene-Zeitreihe"
+
+\end_inset
+
+Darstellung gemessene Zeitreihe von Dyade 10
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename /home/john/Dropbox/cp13/Kind-Mutti/CP/Blicke/jons_stuff/Simulierte Dyade.png
+	lyxscale 10
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Darstellung-simulierte-Zeitreihe"
+
+\end_inset
+
+Darstellung simulierte Zeitreihe von Dyade 10
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\noindent
+Auswertungsautomatisierung
+\end_layout
+
+\begin_layout Standard
+\noindent
+Weiterhin wurde ein Tool erstellt, mit dem sich mit Übergabe der Dyadennummer
+ die Zeitreihen von Mutter und Kind sowohl für vor als auch nach Stresseinfluss
+ darstellen lassen.
+ Ein Beispiel ist in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:"
+
+\end_inset
+
+ dargestellt.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/john/Dropbox/cp13/Kind-Mutti/CP/Blicke/jons_stuff/Zeitreihe361.png
+	lyxscale 20
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Außerdem wird eine Kreuzkorrelations Funktion erstellt und abgebildet (Abb.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Cross-Correlation-für"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/john/Dropbox/cp13/Kind-Mutti/CP/Blicke/jons_stuff/crossCorr361.png
+	lyxscale 20
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Cross-Correlation-für"
+
+\end_inset
+
+Cross Correlation für Dyade 361
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Mit dieser lassen sich Aussagen über den Beziehungstyp von Mutter und Kind
+ treffen, d.h.
+ ob das Verhalten der Mutter dem des Kindes folgt oder umgekehrt, indem
+ das Maximum der Funktion in der Nähe des Nullpunkts bestimmt wird.
+\end_layout
+
+\end_body
+\end_document

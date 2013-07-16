@@ -1,0 +1,534 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass scrartcl
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip smallskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Zusammenfassung
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Abbildung
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In dieser Arbeit werden von Psychologen der Universität Hamburg erhobene
+ Daten ausgewertet.
+ In den Untersuchungen wurden die Blickmuster von Mutter Kind Paaren jeweils
+ für eine stressfreie als auch für eine Situation unter äußerem Stresseinfluss
+ dokumentiert.
+ Bei den Müttern lag jeweils ein uns nicht bekanntes Krankheitsbild vor.
+ Zur Einteilung der Dyaden in Gruppen ähnlichen Verhaltens wurde die Methode
+ der hierarchischen Clusterung eingeführt.
+ 
+\end_layout
+
+\begin_layout Section
+Clusterbildung anhand der Aufenthaltswahrscheinlichkeit
+\end_layout
+
+\begin_layout Subsection
+Grundlagen
+\end_layout
+
+\begin_layout Standard
+Kombiniert man die jeweils vier möglichen Mutter und Kind Zustände, so erhält
+ man 16 mögliche Zustände, die den Gesamtzustand des Systems zu einem bestimmten
+ Zeitpunkt beschreiben.
+\begin_inset Formula 
+\[
+Z(t)\in\{z_{1},z_{2},...,z_{15},z_{16}\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Anhand einer Zeitreihe lässt sich für jede Dyade eine empirische Aufenthaltswahr
+scheinlichkeit 
+\begin_inset Formula $P(z_{i})$
+\end_inset
+
+ für den Gesamtzustand bestimmen.
+ Die Aufenthaltswahrscheinlichkeiten werden
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+sind
+\end_layout
+
+\end_inset
+
+ auf 1 normiert.
+ 
+\begin_inset Formula $\sum_{i=1}^{16}P(z_{i})=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Aufenthaltswahrscheinlichkeiten einer Zeitreihe können einen Ortsvektor
+ 
+\begin_inset Formula $\vec{P}$
+\end_inset
+
+ im 16-dimesnionalen P-Raum definieren 
+\begin_inset Formula $P_{i}=P(z_{i})$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Nun wird die Annahme aufgestellt, dass der 
+\begin_inset Formula $\vec{P}$
+\end_inset
+
+ Vektor eine relevante Aussage über die Dyade trifft.
+ 
+\end_layout
+
+\begin_layout Subsection
+Methode der Hierarchischen Clusterung
+\end_layout
+
+\begin_layout Standard
+Ziel der hier definierten Methode ist es, die Dyaden in hierarchisch ineinander
+ gestaffelte Gruppen einzuteilen.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+kein Satz
+\end_layout
+
+\end_inset
+
+Das heißt, dass eine Gruppe jeweils eine oder mehrere Untergruppen enthalten
+ kann.
+ Um die Komplexität des Ergebnisses zu begrenzen, soll eine Überschneidung
+ verschiedener Gruppen vermieden werden.
+\end_layout
+
+\begin_layout Standard
+Als Kriterium für die Ähnlichkeit zweier 
+\begin_inset Formula $\vec{P}$
+\end_inset
+
+-Vektoren wurde ihre Nähe im P-Raum gewählt.
+ Der Abstand d zweier Vektoren 
+\begin_inset Formula $\vec{P}(x)$
+\end_inset
+
+ und 
+\begin_inset Formula $\vec{P}(y)$
+\end_inset
+
+ wird hier mit der euklidischen Norm definiert.
+ 
+\begin_inset Formula 
+\[
+d=\sqrt{\sum_{i}[P_{i}(x)-P_{i}(y)]^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nun wird für den 
+\begin_inset Formula $\vec{P}$
+\end_inset
+
+ -Vektor jeder Dyade eine nach dem Abstand sortierte Liste der Nachbarn
+ aufgestellt.
+ Jetzt werden die Dyaden nach folgendem Verfahren in Gruppen eingeteilt:
+ Zunächst wird eine beliebige Dyade (hier als x bezeichnet) gewählt.
+ Der Abstand dieser Dyade zu ihrem nächsten Nachbarn (hier als y bezeichnet)
+ wird als Maßstab m zur Gruppeneinteilung verwendet.
+ 
+\begin_inset Formula 
+\[
+m=d(x,y)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die hier gebildete Gruppe besteht zunächst nur aus den Dyaden x und y.
+ Nun wird überprüft, ob die Dyade y Nachbarn mit einem geringeren Abstand
+ als m aufweist.
+ Sollte dies der Fall sein, so werden diese Nachbarn mit in die Gruppe aufgenomm
+en.
+ Auch die neu aufgenommenen Gruppenmitglieder werden auf Nachbarn mit einem
+ Abstand kleiner m überprüft.
+ Kann kein Nachbar eines der Gruppenmitglieder mit einem Abstand kleiner
+ m ermittelt werden, so wird die Gruppe geschlossen.
+ Dieses Procedere muss für jede Dyade durchgeführt werden.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+wird
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In Abbildung 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ ist die hierarchische Clusterung anhand von Punkten im zweidimensionalen
+ Raum veranschaulicht.
+ Die Clusterbildung findet hier für den Punkt 2 statt.
+ Zur vollständigen Einteilung in Cluster muss das Verfahren auch auf die
+ Punkte 1, 3, und 4 angewandt werden.
+ In Abbildung 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+.2 wird der charakteristische Abstand für die Clusterbildung anhand von Punkt
+ 2 abgebildet
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+doppelt?
+\end_layout
+
+\end_inset
+
+.
+ In den Abbildungen 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+.3 und 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+.4 wird gelangen die Punkte 1 und 3 in den Cluster.
+ Punkt 4 befindet sich zu keinem der Clusterpunkte in einem Abstand geringer
+ dem des charakteristischen Anstandes und ist somit nicht Teil des Clusters.
+ Wendet man die hierarchische Clusterung auch auf die Punkte 1,3 und 4 an,
+ so erhält man folgende Cluster:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{1}=\{1,3\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{2}=\{1,2,3\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{3}=\{1,3\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{4}=\{1,2,3,4\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Da 
+\begin_inset Formula $C_{1}$
+\end_inset
+
+
+\begin_inset Formula $C_{3}$
+\end_inset
+
+entspricht, würde man für die die vier Punkte 3 unterschiedliche Cluster
+ erhalten, wobei 
+\begin_inset Formula $C_{1}$
+\end_inset
+
+ eine Untermenge von 
+\begin_inset Formula $C_{3}$
+\end_inset
+
+ ist, welcher wiederum eine Untermenge von 
+\begin_inset Formula $C_{4}$
+\end_inset
+
+ist.
+\end_layout
+
+\begin_layout Standard
+Die hierarchische Clusterung im höherdimensionalen Raum verläuft analog.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/m8se/Arbeit/CP/Blicke/Bilder/hir_c_0.png
+	scale 35
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/m8se/Arbeit/CP/Blicke/Bilder/hir_c_1.png
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/m8se/Arbeit/CP/Blicke/Bilder/hir_c_2.png
+	scale 35
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/m8se/Arbeit/CP/Blicke/Bilder/hir_c_3.png
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Beispiel einer hierarchischen Clusterung für den Punkt 2 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Anwendung
+\end_layout
+
+\begin_layout Standard
+In den folgenden Abbildungen sind die Ergebnisse der hierarchischen Clusterung
+ grafisch dargestellt.
+ Zu unterst sind die großen Obergruppen dargestellt.
+ Oberhalb einer Obergruppen befinden sich jeweils die kleineren Teilgruppen.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../Bilder/stress0spektrum.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Dyden Gruppen ohne Stress
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../Bilder/stress1spektrum.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Dyden Gruppen unter Stress
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

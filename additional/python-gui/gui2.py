@@ -7,7 +7,7 @@ class App:
         frame=Frame(master)
         frame.pack(side=LEFT,fill=Y)
         f2=Frame(master,bg="red")
-        f2.pack(fill=X)
+        f2.pack(expand=1,fill=BOTH)
         
         f3=Frame(frame)
         f3.pack()
@@ -24,7 +24,9 @@ class App:
         self.list.pack(fill=BOTH,expand=1,side=LEFT)
         Label(f3,text="Choose one").pack(side=TOP,fill=X,expand=1)
         
-        Button(f2,text="Hello").grid(row=0,column=0);
+        Button(f2,text="Hello").grid(row=0,column=1);
+        Button(f2,text="Lapp3n").grid(row=1,column=2)
+        Button(f2,text="Lapp3!n").grid(row=2,column=3)
         #Entry(f2,textvariable=text).grid(row=0,column=1)
         self.current=self.list.curselection()
         self.poll()
