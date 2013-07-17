@@ -100,7 +100,7 @@ class App:
         self.init_popup(f2)
         self.list.bind("<Button-3>", self.do_popup)
     
-    
+    #
     def poll(self):
         now = self.list.curselection()
         if now != self.current:
