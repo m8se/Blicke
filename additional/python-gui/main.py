@@ -14,6 +14,8 @@ class App:
         self.popup.add_separator()
         self.popup.add_command(label="Home")
     
+    def selectAll(self):
+        self.list.selection_set(0,END)
     def showClusterProb(self):
         exec_command("cd ..;python ")   
     def showClusterStaytime(self):
@@ -55,7 +57,7 @@ class App:
         f1.pack(pady=20)
         
         
-        l=Label(f1,text="Bitte waehlen Sie die auszuschliessenden Dyaden:")
+        l=Label(f1,text="Bitte waehlen Sie die auswertenden Dyaden:")
         f = tkFont.Font(l,("Sans Serif",12))
         l.configure(font=f)
         l.pack()
@@ -69,7 +71,7 @@ class App:
         f4=Frame(f3)
         f4.pack(fill=BOTH,expand=1)
         scrollbar=Scrollbar(f4,orient=VERTICAL)
-        self.list=Listbox(f4,font=("Arial", 10),yscrollcommand=scrollbar.set,selectmode=MULTIPLE,selectbackground="red",selectforeground="white")
+        self.list=Listbox(f4,font=("Arial", 10),yscrollcommand=scrollbar.set,selectmode=MULTIPLE,selectbackground="lightblue",selectforeground="white")
         scrollbar.config(command=self.list.yview)
         for item in self.ids:
             self.list.insert(0,"Dyade "+item)
@@ -80,7 +82,7 @@ class App:
         self.current=self.list.curselection()
         self.poll()
         
-        b_reset=Button(f3,text="Zuruecksetzen",command=self.list.selection_clear(0))
+        b_reset=Button(f3,text="Alles auswaehlen",command=self.selectAll)
         b_reset.pack(fill=BOTH)
         
         f5=LabelFrame(f2,text="Optionen")
