@@ -10,7 +10,7 @@ class App:
         
         self.popup = Menu(root, tearoff=0)
         self.popup.add_command(label="Diagramm",command=self.showDyad) # , command=next) etc...
-        self.popup.add_command(label="XCorr")
+        self.popup.add_command(label="XCorr",command=self.showXCorr)
         self.popup.add_separator()
         self.popup.add_command(label="Home")
     
@@ -20,10 +20,12 @@ class App:
         exec_command("cd ..;python staytime.py")
     def showClusterCorr(self):
         exec_command("cd ../correl;python correl.py")
-    def showClusterXCorr(self):
+    def showClusterXCorrAll(self):
         exec_command("cd ..;python xcorrel_all.py")
     def showDyad(self):
         exec_command("cd ..;python vis_dyade.py "+str(self.ids[self.cur]))
+    def showXCorr(self):
+        exec_command("cd ..;python xcorrel.py "+str(self.ids[self.cur]))
     def do_popup(self,event):
         # display the popup menu 
         self.cur=self.list.nearest(event.y)
@@ -95,7 +97,7 @@ class App:
         b_corr=Button(f5,text="Clusterung nach Korrelationskoeffizient",command=self.showClusterCorr)
         b_corr.pack(fill=BOTH,expand=1)
         
-        b_xcorr=Button(f5,text="Clusterung mit Kreuzkorrelation",command=self.showClusterXCorr)
+        b_xcorr=Button(f5,text="Clusterung mit Kreuzkorrelation",command=self.showClusterXCorrAll)
         b_xcorr.pack(fill=BOTH,expand=1)
         self.init_popup(f2)
         self.list.bind("<Button-3>", self.do_popup)
