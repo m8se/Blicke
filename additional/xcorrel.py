@@ -3,7 +3,7 @@
 
 
 import pickle
-from pylab import *
+from pylab import *# plot, ylim, show, title
 import sys
 from scipy.signal import argrelextrema
 
@@ -85,13 +85,16 @@ def find_maximum(cor):
 
 dyade_in=sys.argv[1]
 
-f2=open("../Daten/zeitreihen.data");
-zeitreihen=pickle.load(f2)
+f=open("../Daten/zeitreihen.data");
+zeitreihen=pickle.load(f)
+f.close()
 dyade_num=len(zeitreihen)
 #print zeitreihen
 
 f=open("../Daten/id_lst.data");
 ids=pickle.load(f)
+f.close()
+
 print ids;
 
 # Bestimme die Indexnummer fuer die uebergebene Dyade

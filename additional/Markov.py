@@ -1,8 +1,10 @@
+#! /usr/bin/env python
 import pickle
-from pylab import *
+from pylab import title, plot, show, xlabel, ylabel, xlim , ylim, sys
 import random
 
-
+#Pfad zum Daten-Ordner
+dat_loc="../../Daten/"
 # Zufaellige Wahl einea Zustandes, gewichtet durch die Zustandswahrsch.
 def choose_randomly(vector):
 	SUM=0
@@ -25,14 +27,17 @@ def print_ueb_matrix(matrix):
 if(len(sys.argv)!=2):
 	print "Falscher Programmaufruf:\nUse:python Markov.py <dyaden_nr>"
 	#print sys.argv
-	exit()
+	sys.exit()
 
 
-f=open("../Daten/id_lst.data");
+f=open(dat_loc+"id_lst.data");
 ids=pickle.load(f)
+f.close()
 
-f2=open("../Daten/zeitreihen.data");
-zeitreihen=pickle.load(f2)
+f=open(dat_loc+"zeitreihen.data");
+zeitreihen=pickle.load(f)
+f.close()
+
 dyade_num=len(zeitreihen)
 
 dyaden_ids=[]
@@ -92,9 +97,9 @@ show()
 
 # Einlesen der Aufenthaltswahrscheinlichkeiten
 
-f=open("../Daten/rel_aufenthalt.data")
+f=open(dat_loc+"rel_aufenthalt.data")
 start_vectors=pickle.load(f)
-
+f.close()
 
 
 # Waehle Anfangszustand

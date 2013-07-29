@@ -1,25 +1,24 @@
 import pickle
-from pylab import *
+from pylab import plot, figure, show, scatter, xlabel, ylabel, zeros, random, subplot, ones, text, hist, rand	
 
 import sys
 sys.path.append("../")
 from hierarchische_clusterung import gruppen_erzeugen
 
 
-f2=open("../Daten/zeitreihen.data");
-zeitreihen=pickle.load(f2)
+f=open("../Daten/zeitreihen.data");
+zeitreihen=pickle.load(f)
+f.close()
 #print zeitreihen
-
-dyade_num=len(zeitreihen)
 
 f=open("../Daten/id_lst.data");
 ids=pickle.load(f)
+f.close()
 #print ids;
 
-dyaden_ids=[]
-for i in range(dyade_num):
-	dyaden_ids+=[ids[i]]
+dyade_num=len(zeitreihen)
 
+dyaden_ids=list(ids)
 
 # Bestimme fuer eine bestimmte Dyade die Staytime im ungestressten und gestressten Zustand
 # Fuer die Auswertung interessiert lediglich das Verhalten der Mutter
@@ -37,6 +36,7 @@ Auswertung:
 	- Klass. moeglich nach Abnahme und Zunahme
 """
 #
+
 
 freqs=zeros([dyade_num,3])
 dt=0.04
