@@ -1,8 +1,8 @@
 import pickle
-from pylab import *
+#from pylab import
 import random
 
-
+dat_loc='../Daten/'
 def choose_randomly(vector):
 	sum=0
 	r=random.random()
@@ -17,12 +17,14 @@ def print_ueb_matrix(matrix):
 		for b in range(16):
 			print matrix[a,b],
 
-f=open("../Daten/id_lst.data");
+f=open(dat_loc+"id_lst.data");
 ids=pickle.load(f)
+f.close()
 print ids;
 
-f2=open("../Daten/zeitreihen.data");
-zeitreihen=pickle.load(f2)
+f=open(dat_loc+"zeitreihen.data");
+zeitreihen=pickle.load(f)
+f.close()
 print zeitreihen
 
 
@@ -73,8 +75,9 @@ show()
 # Einlesen der Aufenthaltswahrscheinlichkeiten
 
 dyade=20
-f=open("../Daten/rel_aufenthalt.data")
+f=open(dat_loc+"rel_aufenthalt.data")
 start_vectors=pickle.load(f)
+f.close()
 
 # Nehme alle uebergebenen Dyaden und finde die entsprechenden Indizes
 in_indizes=['3','6']

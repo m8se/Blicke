@@ -1,25 +1,31 @@
-from pylab import *
+#! /usr/bin/env python
+from pylab import show
 import pickle
-
+#Pfad zum Daten-Ordner
+dat_loc="../../Daten/"
+#Die Laenge einer Liste ueberpruefen
 def find_len(liste):
-	len=0
+	len_l=0
 	for i in liste:
 		if(i==0):
 			break;
-		len+=1
-	return len
+		len_l+=1
+	return len_l
 		
-
-f2=open("../../Daten/zeitreihen.data");
+#############Laden der Daten
+f=open(dat_loc+"zeitreihen.data");
 zeitreihen=pickle.load(f2)
-#print zeitreihen
+f.close
+f=open(dat_loc+"id_lst.data");
+ids=pickle.load(f)
+f.close
+######################
 
 dyade_num=len(zeitreihen)
+#print ids;
 
-f=open("../../Daten/id_lst.data");
-ids=pickle.load(f)
-print ids;
 
+#Redundanter Schritt der aus dem Array eine Liste macht
 dyaden_ids=[]
 for i in range(dyade_num):
 	dyaden_ids+=[ids[i]]
@@ -37,6 +43,8 @@ for d in range(dyade_num):
 				a+=1
 		lens[d,m]=a
 print "Trimming end"
+
+
 
 cors=zeros([dyade_num,2])
 for i in range(dyade_num):
