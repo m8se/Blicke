@@ -404,13 +404,13 @@ Da
 \begin_inset Formula $C_{3}$
 \end_inset
 
-entspricht, würde man für die die vier Punkte 3 unterschiedliche Cluster
- erhalten, wobei 
+entspricht, würde man für die vier Punkte 3 unterschiedliche Cluster erhalten,
+ wobei 
 \begin_inset Formula $C_{1}$
 \end_inset
 
  eine Untermenge von 
-\begin_inset Formula $C_{3}$
+\begin_inset Formula $C_{2}$
 \end_inset
 
  ist, welcher wiederum eine Untermenge von 
@@ -588,19 +588,42 @@ Dyaden Gruppen unter Stress
 
 \end_layout
 
+\begin_layout Standard
+An dieser Stelle kann die Hypothese, dass die Cluster medizinische Muster
+ widerspiegeln von Psychologen überprüft werden.
+ 
+\end_layout
+
 \begin_layout Subsection
 \noindent
 Klassifikation mithilfe der SVM Methode
 \end_layout
 
 \begin_layout Standard
+Hat man mithilfe bereits bestehender Zeitreihen Dyaden in Gruppen eingeteilt,
+ so ist es von Interesse, neue Dyden den bereits gebildeten Gruppen zuordnen
+ zu können.
+ Ein Methode, die sich hierfür anbietet ist die Support Vector Machine (SVM).
+ 
+\end_layout
+
+\begin_layout Standard
 \noindent
-Support Vector Machines werden für die automatisierte Klassifizierung von
- Messdaten verwendet.
+SVMs werden für die automatisierte Klassifizierung von Messdaten verwendet.
  Hierfür werden Testdaten mit bereits vorgenommener Klassifizierung eingelesen.
  Die Einordnung erfolgt durch Erzeugung von Hyperebenen im Zustandsraum
  in der Weise, dass der Abstand von Punkten mit unterschiedlichen Klassen
- maximal wird.
+ maximal wird 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+NR
+\end_layout
+
+\end_inset
+
+.
  Durch Verwendung von entsprechenden Kernelfunktionen im höherdimensionalen
  Raum als der des Zustandsraums können sogar nichtlineare Trennungsmannigfaltigk
 eiten erzeugt werden.
@@ -693,13 +716,29 @@ Man erkennt deutlich, dass die Klassen mit geringer Mächtigkeit teilweise
 
 \begin_layout Section
 \noindent
-Untersuchung der Zustandsänderungsraten vor und nach Stresseinwirkung
+Untersuchung der Zustandsänderungsraten
+\end_layout
+
+\begin_layout Standard
+Die Häufigkeiten des Wechsels zwischen einzelnen Zuständen der Mütter sind
+ möglicherweise charakteristisch für das vorliegende Krankheitsbild.
+ Aus diesem Grund wurde die Zustandsänderungsraten der Mütter sowohl im
+ strssfreien Zustand, als auch unter Stresseinwirkung ermittelt .
 \end_layout
 
 \begin_layout Standard
 \noindent
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\noindent
 Das Programm staytime.py stellt für jede Dyade die Zustandsänderungsraten
  der Mutter vor und nach Einwirkung von Stress dar.
+\end_layout
+
+\end_inset
+
  Diese sind in Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
