@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python 
 from numpy import zeros
 import pickle
 datei=open("Daten/blick2.dat", "r")
