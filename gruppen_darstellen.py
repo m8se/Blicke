@@ -7,24 +7,24 @@ import matplotlib.pyplot as plt
 from pylab import show, plot, figure, subplot, axis,ylim,xlim , title, xlabel, ylabel, hist, text
 
 modus=0 #0= normal ,1 =stress ,2 kombiniert
-if modus ==0:
-	daten=open("Daten/gruppen_norm.data", "r")
-	gruppen=pickle.load(daten)
-	daten.close
-	Titel='Normal'
-elif modus ==1:
-	daten=open("Daten/gruppen_norm_str.data", "r")
-	gruppen=pickle.load(daten)
-	daten.close
-	Titel='Stress'
-elif modus ==2:
-	daten=open("Daten/gruppen_comb.data", "r")
-	gruppen=pickle.load(daten)
-	daten.close
-	Titel='Kombiniert'
-daten = open("Daten/id_lst.data", "r")
-id_lst=pickle.load(daten)
-daten.close
+#if modus ==0:
+#	daten=open("Daten/gruppen_norm.data", "r")
+#	gruppen=pickle.load(daten)
+#	daten.close
+#	Titel='Normal'
+#elif modus ==1:
+#	daten=open("Daten/gruppen_norm_str.data", "r")
+#	gruppen=pickle.load(daten)
+#	daten.close
+#	Titel='Stress'
+#elif modus ==2:
+#	daten=open("Daten/gruppen_comb.data", "r")
+#	gruppen=pickle.load(daten)
+#	daten.close
+#	Titel='Kombiniert'
+#daten = open("Daten/id_lst.data", "r")
+#id_lst=pickle.load(daten)
+#daten.close
 
 
 #Doppelte Gruppen werden entfernt

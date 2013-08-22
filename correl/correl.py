@@ -1,8 +1,10 @@
 #! /usr/bin/env python
-from pylab import show
+from pylab import show, plot, xlabel, ylabel
 import pickle
+from scipy import zeros, corrcoef
+import random
 #Pfad zum Daten-Ordner
-dat_loc="Daten/"
+dat_loc="../Daten/"
 #Die Laenge einer Liste ueberpruefen
 def find_len(liste):
 	len_l=0
@@ -14,7 +16,7 @@ def find_len(liste):
 		
 #############Laden der Daten
 f=open(dat_loc+"zeitreihen.data");
-zeitreihen=pickle.load(f2)
+zeitreihen=pickle.load(f)
 f.close
 f=open(dat_loc+"id_lst.data");
 ids=pickle.load(f)
@@ -63,7 +65,6 @@ for i in range(dyade_num):
 xmax=0.6
 ymax=0.6
 N=50
-
 X=random(N)*xmax
 Y=random(N)*ymax
 

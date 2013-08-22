@@ -99,7 +99,8 @@ class App:
         b_state_change_rate.pack(fill=BOTH,expand=1)
         
         b_corr=Button(f5,text="Clusterung nach Korrelationskoeffizient",command=self.showClusterCorr)
-g
+        b_corr.pack(fill=BOTH,expand=1)
+        
         b_xcorr=Button(f5,text="Clusterung mit Kreuzkorrelation",command=self.showClusterXCorrAll)
         b_xcorr.pack(fill=BOTH,expand=1)
         self.init_popup(f2)
