@@ -40,13 +40,13 @@ class App:
     def __init__(self,master):
         # Alle Dyandennr. einlesen
         
-        f=open("../../Daten/zeitreihen.data");
+        f=open("../Daten/zeitreihen.data");
         zeitreihen=pickle.load(f)
 	f.close()
         #print zeitreihen
 
         dyade_num=len(zeitreihen)
-        f=open("../../Daten/id_lst.data");
+        f=open("../Daten/id_lst.data");
         self.ids=pickle.load(f)
 	f.close()
         
@@ -67,8 +67,11 @@ class App:
         f2=Frame(frame)
         f2.pack(fill=BOTH,expand=1)
         
-        f3=Frame(f2)
+        f3=LabelFrame(f2,text="Dyadenauswahl")
         f3.pack(side=LEFT,fill=BOTH)
+        
+        b_reset=Button(f3,text="Alles auswaehlen",command=self.selectAll)
+        b_reset.pack(fill=BOTH)
         
         f4=Frame(f3)
         f4.pack(fill=BOTH,expand=1)
@@ -84,27 +87,42 @@ class App:
         self.current=self.list.curselection()
         self.poll()
         
-        b_reset=Button(f3,text="Alles auswaehlen",command=self.selectAll)
-        b_reset.pack(fill=BOTH)
+        f7=Frame(f3)
+        f7.pack(fill=BOTH)
+        MODES = [
+        ("Stressfrei", "1"),
+        ("Gestresst", "2"),
+        ("32 zus.", "3"),
+        ("2x8", "4"),
+        ]
+
+        v = StringVar()
+        v.set("L") # initialize
+    
+        for text, mode in MODES:
+            b = Radiobutton(f7, text=text,variable=v, value=mode)
+            b.pack(anchor=W)
         
         f5=LabelFrame(f2,text="Optionen")
         f5.pack(fill=BOTH,expand=1);
         
         print "Trololo"
         
-        b_auf=Button(f5,text="Clusterung nach Aufenthaltswahrscheinlichkeit")
+        b_auf=Button(f5,text="Clusterung nach Aufenthaltswahrscheinlichkeit",command=self.showClusterProb)
         b_auf.pack(fill=BOTH,expand=1)
         
         b_state_change_rate=Button(f5,text="Clusterung nach Zustandsuebergangsrate",command=self.showClusterStaytime)
         b_state_change_rate.pack(fill=BOTH,expand=1)
         
         b_corr=Button(f5,text="Clusterung nach Korrelationskoeffizient",command=self.showClusterCorr)
-g
+        b_corr.pack(fill=BOTH,expand=1) 
+        
         b_xcorr=Button(f5,text="Clusterung mit Kreuzkorrelation",command=self.showClusterXCorrAll)
         b_xcorr.pack(fill=BOTH,expand=1)
         self.init_popup(f2)
         self.list.bind("<Button-3>", self.do_popup)
-    
+        
+       
     #
     def poll(self):
         now = self.list.curselection()

@@ -85,12 +85,12 @@ def find_maximum(cor):
 	return res
 
 
-f2=open("../Daten/zeitreihen.data");
+f2=open("Daten/zeitreihen.data");
 zeitreihen=pickle.load(f2)
 dyade_num=len(zeitreihen)
 #print zeitreihen
 
-f=open("../Daten/id_lst.data");
+f=open("Daten/id_lst.data");
 ids=pickle.load(f)
 print ids;
 

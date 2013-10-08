@@ -15,6 +15,9 @@ if(len(sys.argv)!=2):
 dyade_in=sys.argv[1]
 
 
+zeitreihen_ungestresst=req_rel_auf([dyade_in],1);
+zeitreihen_gestresst=req_rel_auf([dyade_in],)
+
 f=open(dat_loc+"zeitreihen.data");
 zeitreihen=pickle.load(f)
 f.close()
@@ -27,7 +30,7 @@ ids=pickle.load(f)
 f.close()
 print ids;
 
-# Bestimme die Indxnummer fuer die uebergebene Dyade
+# Bestimme die Indexnummer fuer die uebergebene Dyade
 dyaden_ids=[]
 for i in range(dyade_num):
 	dyaden_ids+=[ids[i]]
