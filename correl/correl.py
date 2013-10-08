@@ -2,7 +2,10 @@
 from pylab import show, plot, xlabel, ylabel
 import pickle
 from scipy import zeros, corrcoef
-import random
+from numpy.random import random
+from numpy import ones
+from pylab import figure,hist,mean,text
+
 #Pfad zum Daten-Ordner
 dat_loc="../Daten/"
 #Die Laenge einer Liste ueberpruefen
@@ -27,7 +30,7 @@ dyade_num=len(zeitreihen)
 #print ids;
 
 
-#Redundanter Schritt der aus dem Array eine Liste macht
+#Redundanter Schritt, der aus dem Array eine Liste macht
 dyaden_ids=[]
 for i in range(dyade_num):
 	dyaden_ids+=[ids[i]]

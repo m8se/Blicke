@@ -30,6 +30,7 @@ class App:
         #Entry(f2,textvariable=text).grid(row=0,column=1)
         self.current=self.list.curselection()
         self.poll()
+        
 
     def poll(self,):
         now = self.list.curselection()
