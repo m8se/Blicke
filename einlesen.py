@@ -2,7 +2,7 @@
 from numpy import zeros
 import pickle
 datei=open("Daten/blick2.dat", "r")
-#Daten werden Zeilenweise eingelsen und in einen 55X3X4510 Array verpackt. 55 entspricht der Dyaden Zahl. 3 für stressfrei, mit Stress und den Sonderfall. In die 4500 entspricht der maximalen Laenge.
+#Daten werden Zeilenweise eingelsen und in einen 55X3X4510 Array verpackt. 55 entspricht der Dyaden Zahl. 3 fuer stressfrei, mit Stress und den Sonderfall. In die 4500 entspricht der maximalen Laenge.
 id_lst=range(0)
 zeitreihen=zeros([55,3,4510])
 i=0
