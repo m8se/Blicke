@@ -18,6 +18,7 @@ class DAO:
         self.f=open("Daten/id_lst.data")
         self.id_lst=pickle.load(self.f)
         self.f.close();
+        print
         
         
         print "Init"
