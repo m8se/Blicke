@@ -1,23 +1,22 @@
 from Tkinter import *
 import pickle
+import sys
 import time
 import tkFont 
 from numpy.distutils.exec_command import exec_command
+sys.path.append("../")
+from DAO import DAO
 
 class App:
     
     list;
     
     def getCurrentStress(self):
-        curSel=self.v.get()
-        if(curSel==1):
-		return DAO.NOT_STRESS
-        elif(curSel==2):
-		return DAO.STRESS
-        elif(curSel==3):
-		return DAO.STRESS|DAO.NOT_STRESS
-        elif(curSel==4): 
-		return 8
+        curSel=int(self.v.get())
+        if(curSel==1):return DAO.NOT_STRESS
+        elif(curSel==2):return DAO.STRESS
+        elif(curSel==3):return DAO.STRESS|DAO.NOT_STRESS
+        elif(curSel==4): return 8
         
     def init_popup(self,root):
         
