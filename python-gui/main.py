@@ -30,6 +30,8 @@ class App:
         for i in cur_sel:
             cur_ids+=[self.ids[self.ids_len-1-int(i)]]
         print cur_ids;
+    def getSelectedPopupDyad(self):
+        return self.ids[self.ids_len-1-self.cur]
     def selectAll(self):
         self.list.selection_set(0,END)
     def showClusterProb(self):
@@ -42,7 +44,7 @@ class App:
     def showClusterXCorrAll(self):
         exec_command("cd ..;python xcorrel_all.py")
     def showDyad(self):
-        print "Aktuellle Dyade: "+str(self.ids[self.ids_len-1-self.cur])
+        print "Aktuellle Dyade: "+str(self.getSelectedPopupDyad())
         exec_command("cd ..;python vis_dyade.py "+str(self.ids[self.cur]))
     def showXCorr(self):
         exec_command("cd ..;python xcorrel.py "+str(self.ids[self.cur]))
