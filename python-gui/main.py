@@ -29,7 +29,7 @@ class App:
     
     def getSelectedDyads(self):
         cur_sel=self.list.curselection();
-        cur_ids=[]
+        cur_ids=([])
         for i in cur_sel:
             cur_ids+=[int(self.ids[self.ids_len-1-int(i)])]
         return cur_ids;
@@ -43,11 +43,11 @@ class App:
     def showClusterStaytime(self):
         exec_command("cd ..;python staytime.py")
     def showClusterCorr(self):
-        exec_command("cd ../correl;python correl.py "+str(self.ids[self.cur])+" "+self.getCurrentStress())
+        exec_command("cd ../correl;python correl.py '"+str(self.getSelectedDyads())+"' "+str(self.getCurrentStress()))
     def showClusterXCorrAll(self):
         exec_command("cd ..;python xcorrel_all.py")
     def showDyad(self):
-        print "Aktuellle Dyade: "+str(self.getSelectedPopupDyad())
+        print "Aktuellle Dyade: "+str(self.getSelectedPopupDyad()+"' ")
         exec_command("cd ..;python vis_dyade.py "+str(self.ids[self.cur]))
     def showXCorr(self):
         exec_command("cd ..;python xcorrel.py "+str(self.ids[self.cur]))

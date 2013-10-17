@@ -5,6 +5,12 @@ from scipy import zeros, corrcoef
 from numpy.random import random
 from numpy import ones
 from pylab import figure,hist,mean,text
+import sys
+from numpy import *
+
+
+res=sys.argv[1][1:-1].split(',')
+print "Hall "+str(res[2])
 
 #Pfad zum Daten-Ordner
 dat_loc="../Daten/"
