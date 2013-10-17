@@ -10,10 +10,14 @@ class App:
     
     def getCurrentStress(self):
         curSel=self.v.get()
-        if(curSel==1):return DAO.NOT_STRESS
-        elif(curSel==2):return DAO.STRESS
-        elif(curSel==3):return DAO.STRESS|DAO.NOT_STRESS
-        elif(curSel==4): return 8
+        if(curSel==1):
+		return DAO.NOT_STRESS
+        elif(curSel==2):
+		return DAO.STRESS
+        elif(curSel==3):
+		return DAO.STRESS|DAO.NOT_STRESS
+        elif(curSel==4): 
+		return 8
         
     def init_popup(self,root):
         
@@ -35,7 +39,7 @@ class App:
     def selectAll(self):
         self.list.selection_set(0,END)
     def showClusterProb(self):
-        print "getSelectedDyads():",self.getSelectedDyads()
+        print "cd ..;python gruppen_darstellen.py '"+str(self.getSelectedDyads())+"' "+str(self.getCurrentStress())
         exec_command("cd ..;python gruppen_darstellen.py '"+str(self.getSelectedDyads())+"' "+str(self.getCurrentStress()))
     def showClusterStaytime(self):
         exec_command("cd ..;python staytime.py")
