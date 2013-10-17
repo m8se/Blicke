@@ -25,12 +25,11 @@ class App:
     
     
     def getSelectedDyads(self):
-        print "IDs: "+str(self.ids)
         cur_sel=self.list.curselection();
         cur_ids=[]
         for i in cur_sel:
-            cur_ids+=int([self.ids[self.ids_len-1-int(i)]])
-        print cur_ids;
+            cur_ids+=[int(self.ids[self.ids_len-1-int(i)])]
+        return cur_ids;
     def getSelectedPopupDyad(self):
         return self.ids[self.ids_len-1-self.cur]
     def selectAll(self):
