@@ -5,27 +5,15 @@ from math import sqrt
 import matplotlib
 import matplotlib.pyplot as plt
 from pylab import show, plot, figure, subplot, axis,ylim,xlim , title, xlabel, ylabel, hist, text
+from hierarchische_clusterung import gruppen_erzeugen
+from DAO import DAO
+import sys
+id_lst=sys.argv[1]
+stress=sys.argv[2]
+print stress
+Titel='Normal'
 
-modus=0 #0= normal ,1 =stress ,2 kombiniert
-#if modus ==0:
-#	daten=open("Daten/gruppen_norm.data", "r")
-#	gruppen=pickle.load(daten)
-#	daten.close
-#	Titel='Normal'
-#elif modus ==1:
-#	daten=open("Daten/gruppen_norm_str.data", "r")
-#	gruppen=pickle.load(daten)
-#	daten.close
-#	Titel='Stress'
-#elif modus ==2:
-#	daten=open("Daten/gruppen_comb.data", "r")
-#	gruppen=pickle.load(daten)
-#	daten.close
-#	Titel='Kombiniert'
-#daten = open("Daten/id_lst.data", "r")
-#id_lst=pickle.load(daten)
-#daten.close
-
+gruppen=gruppen_erzeugen(daten.req_rel_auf([299,240,325,245],DAO.STRESS))
 
 #Doppelte Gruppen werden entfernt
 
@@ -41,38 +29,42 @@ modus=0 #0= normal ,1 =stress ,2 kombiniert
 #					gruppen[i,l]=gruppen[i,l+k]
 #					gruppen[i,l+k]=tmp
 gruppen=list(gruppen)
-i=0
-while i<(len(gruppen)-1):
-	l=i+1
-	while l<(len(gruppen)):
-		if (gruppen[i]==gruppen[l]).all():
-			del(gruppen[l])
-		else:
-			l+=1
-	i+=1
-print len(gruppen)
-i=0
-while i<len(gruppen):	
-	if gruppen[i][len(gruppen[0][:])-1]==-1:
+def gruppen_doppelt(gruppen):
+	i=0
+	while i<(len(gruppen)-1):
+		l=i+1
+		while l<(len(gruppen)):
+			if (gruppen[i]==gruppen[l]).all():
+				del(gruppen[l])
+			else:
+				l+=1
 		i+=1
-	else:
-		del gruppen[i]
-		
+	i=0
+	while i<len(gruppen):	
+		if gruppen[i][len(gruppen[0][:])-1]==-1:
+			i+=1
+		else:
+			del gruppen[i]
+	print gruppen
+	gruppen.append(range(len(gruppen[0][:])))
+	print gruppen
 
-
-gruppen.append(range(len(gruppen[0][:])))
+gruppen_doppelt(gruppen)
 #Die Laengen der Arrays werden ermittelt
 def laengen(gruppen):
 	laenge=zeros(len(gruppen))
 	for i in range(len(gruppen)):
 		zahl=0
 		for l in range(len(gruppen[0][:])):
-			zahl=l
+			print "hep", gruppen[i][l]
 			if gruppen[i][l]==-1:
+				print "break"
 				break
+			zahl=l
 		laenge[i]=zahl
 	return laenge
 laenge=laengen(gruppen)
+print "l:",laenge
 #gruppe werden der Laenge nach sortiert
 def sortieren(gruppen,laenge):
 	for i in range(len(laenge)):
@@ -142,6 +134,7 @@ def zuordnen(gruppen):
 				break
 
 	return ref
+print gruppen
 a=zuordnen(gruppen)
 #
 #Diagramm mit den Gruppen wird erstellt

@@ -26,7 +26,7 @@ class App:
     def selectAll(self):
         self.list.selection_set(0,END)
     def showClusterProb(self):
-        exec_command("cd ..;python ")   
+        exec_command("cd ..;python gruppen_darstellung.py"+" "+str(self.ids[self.cur])+" "+getCurrentStress())   
     def showClusterStaytime(self):
         exec_command("cd ..;python staytime.py")
     def showClusterCorr(self):

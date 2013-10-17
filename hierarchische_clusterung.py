@@ -3,20 +3,20 @@ from numpy import zeros, corrcoef, linspace
 import pickle
 from math import sqrt
 from pylab import plot, show, figure
+from DAO import DAO
+
 
 #################
 # Ein Array mit der den Abstand von jedem zu jedem Punkt enthaelt wird erzeugt. 
 def abstand_matrix(array): # Der array sollte die Aufenthaltswahrscheinlichkeiten enthalten	
 	laenge=len(array[:,0])
 	breite=len(array[0,:])
-	print breite, laenge
 	norm=zeros([laenge,laenge])
 	for i in range(laenge):
 		for l in range(laenge):
 			summe=0
 			for k in range(breite):
 				summe+=(array[i,k]-array[l,k])**2
-			#print i,summe
 			norm[i,l]=sqrt(summe)
 	return norm
 
@@ -50,7 +50,6 @@ def nnachbar(array):# Der array sollte die Aufenthaltswahrscheinlichkeiten entha
 				nachbar[i,l,0]=tmp[1]
 				nachbar[i,l,1]=tmp[0]
 				del(stelle[tmp[2]])
-	print 'nachbar', nachbar, 'end'
 	return nachbar				
 ###########
 #Durchfuehrung der hierarchischen clusterung
@@ -103,6 +102,7 @@ def gruppen_erzeugen(array):# Der array sollte die Aufenthaltswahrscheinlichkeit
 				l+=1
 		i+=1
 	return gruppen
+
 #daten=open("Daten/rel_aufenthalt.data", "r")
 #aufenthalt_wk=pickle.load(daten)
 #daten.close
