@@ -2,9 +2,9 @@ import pickle
 from numpy import zeros
 
 class DAO:
-    STRESS=1;
+    NOT_STRESS=1;
     UNSED=2;
-    NOT_STRESS=4;
+    STRESS=4;
     
     def __init__(self):
         self.f=open("Daten/zeitreihen.data");
@@ -55,3 +55,4 @@ class DAO:
                 self.ans[self.ans_it, :] = self.zeitreihen[self.id_nr, st, :]
                 self.ans_it+=1
         return self.ans[:]
+    
