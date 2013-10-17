@@ -8,12 +8,14 @@ from pylab import show, plot, figure, subplot, axis,ylim,xlim , title, xlabel, y
 from hierarchische_clusterung import gruppen_erzeugen
 from DAO import DAO
 import sys
+daten=DAO()
 id_lst=sys.argv[1]
 stress=sys.argv[2]
-print stress
+print id_lst
+print "Stress:",stress
 Titel='Normal'
 
-gruppen=gruppen_erzeugen(daten.req_rel_auf([299,240,325,245],DAO.STRESS))
+gruppen=gruppen_erzeugen(daten.req_rel_auf([299,240,325,245],DAO.STRESS)[:,0,:])
 
 #Doppelte Gruppen werden entfernt
 

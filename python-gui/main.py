@@ -29,15 +29,15 @@ class App:
         cur_sel=self.list.curselection();
         cur_ids=[]
         for i in cur_sel:
-            cur_ids+=int([self.ids[self.ids_len-1-int(i)]])
+            cur_ids+=[int(self.ids[self.ids_len-1-int(i)])]
         print cur_ids;
     def getSelectedPopupDyad(self):
         return self.ids[self.ids_len-1-self.cur]
     def selectAll(self):
         self.list.selection_set(0,END)
     def showClusterProb(self):
-        print self.getSelectedDyads()
-        exec_command("cd ..;python gruppen_darstellung.py "+self.getSelectedDyads()+" "+self.getCurrentStress())
+        print "getSelectedDyads():",self.getSelectedDyads()
+        exec_command("cd ..;python gruppen_darstellen.py '"+str(self.getSelectedDyads())+"' "+str(self.getCurrentStress()))
     def showClusterStaytime(self):
         exec_command("cd ..;python staytime.py")
     def showClusterCorr(self):
