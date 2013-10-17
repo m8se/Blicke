@@ -36,7 +36,7 @@ class App:
         self.list.selection_set(0,END)
     def showClusterProb(self):
         print self.getSelectedDyads()
-        #exec_command("cd ..;python gruppen_darstellung.py"+" "+str(self.ids[self.cur])+" "+self.getCurrentStress())   
+        exec_command("cd ..;python gruppen_darstellung.py "+self.getSelectedDyads()+" "+self.getCurrentStress())
     def showClusterStaytime(self):
         exec_command("cd ..;python staytime.py")
     def showClusterCorr(self):
