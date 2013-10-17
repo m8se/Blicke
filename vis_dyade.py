@@ -3,6 +3,7 @@
 # 	Cross Correlation
 
 
+from DAO import DAO
 import pickle
 from pylab import *
 import sys
@@ -14,9 +15,9 @@ if(len(sys.argv)!=2):
 
 dyade_in=sys.argv[1]
 
-
-zeitreihen_ungestresst=req_rel_auf([dyade_in],1);
-zeitreihen_gestresst=req_rel_auf([dyade_in],)
+dao=DAO()
+zeitreihen_ungestresst=dao.req_rel_auf([dyade_in],DAO.NOT_STRESS)
+zeitreihen_gestresst=dao.req_rel_auf([dyade_in],DAO.STRESS)
 
 f=open(dat_loc+"zeitreihen.data");
 zeitreihen=pickle.load(f)
