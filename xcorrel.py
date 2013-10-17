@@ -1,3 +1,4 @@
+
 # Skript zur Auswertung von Dyaden
 #	Darstellung des Cross Correlation Maximums
 
@@ -111,10 +112,12 @@ dyade_in=sys.argv[1]
 
 
 dao=DAO()
-zeitreihe_unstress=dao.req_rel_auf([dyade_in],DAO.NOT_STRESS)
-zeitreihe_stress=dao.req_rel_auf([dyade_in],DAO.STRESS)
+zeitreihe_unstress=dao.req_zeitreihen([dyade_in],DAO.NOT_STRESS)[0,0]
+zeitreihe_stress=dao.req_zeitreihen([dyade_in],DAO.STRESS)[0,0]
 
-ind=dao.id_lst.index(str(dyade_in))
+
+print "ZR:"+str(zeitreihe_unstress)
+ind=dao.id_lst.index(str(dyade_in)) # Dyaden Indizes Liste
 
 zeitreihen_trimmed_m0=[]
 zeitreihen_trimmed_m2=[]                                    

@@ -23,18 +23,26 @@ class App:
         self.popup.add_separator()
         self.popup.add_command(label="Home")
     
+    def getSelectedDyads(self):
+        print "IDs: "+str(self.ids)
+        cur_sel=self.list.curselection();
+        cur_ids=[]
+        for i in cur_sel:
+            cur_ids+=[self.ids[self.ids_len-1-int(i)]]
+        print cur_ids;
     def selectAll(self):
         self.list.selection_set(0,END)
     def showClusterProb(self):
-        exec_command("cd ..;python gruppen_darstellung.py"+" "+str(self.ids[self.cur])+" "+getCurrentStress())   
+        print self.getSelectedDyads()
+        #exec_command("cd ..;python gruppen_darstellung.py"+" "+str(self.ids[self.cur])+" "+self.getCurrentStress())   
     def showClusterStaytime(self):
         exec_command("cd ..;python staytime.py")
     def showClusterCorr(self):
-        exec_command("cd ../correl;python correl.py "+str(self.ids[self.cur])+" "+getCurrentStress())
+        exec_command("cd ../correl;python correl.py "+str(self.ids[self.cur])+" "+self.getCurrentStress())
     def showClusterXCorrAll(self):
         exec_command("cd ..;python xcorrel_all.py")
     def showDyad(self):
-        print "Aktuellle Dyade"+self.v.get()
+        print "Aktuellle Dyade: "+str(self.ids[self.ids_len-1-self.cur])
         exec_command("cd ..;python vis_dyade.py "+str(self.ids[self.cur]))
     def showXCorr(self):
         exec_command("cd ..;python xcorrel.py "+str(self.ids[self.cur]))
@@ -58,6 +66,7 @@ class App:
         dyade_num=len(zeitreihen)
         f=open("../Daten/id_lst.data");
         self.ids=pickle.load(f)
+        self.ids_len=len(self.ids)
 	f.close()
         
         # Aufbau der GUI
@@ -94,8 +103,8 @@ class App:
         scrollbar.pack(side=LEFT,fill=Y)
         
         #Entry(f2,textvariable=text).grid(row=0,column=1)
-        self.current=self.list.curselection()
-        self.poll()
+        #self.current=self.list.curselection()
+        #self.poll()
         
         f7=Frame(f3)
         f7.pack(fill=BOTH)
