@@ -5,7 +5,16 @@ import tkFont
 from numpy.distutils.exec_command import exec_command
 
 class App:
+    
     list;
+    
+    def getCurrentStress(self):
+        curSel=self.v.get()
+        if(curSel==1):return DAO.NOT_STRESS
+        elif(curSel==2):return DAO.STRESS
+        elif(curSel==3):return DAO.STRESS|DAO.NOT_STRESS
+        elif(curSel==4): return 8
+        
     def init_popup(self,root):
         
         self.popup = Menu(root, tearoff=0)
@@ -21,10 +30,11 @@ class App:
     def showClusterStaytime(self):
         exec_command("cd ..;python staytime.py")
     def showClusterCorr(self):
-        exec_command("cd ../correl;python correl.py")
+        exec_command("cd ../correl;python correl.py "+str(self.ids[self.cur])+" "+getCurrentStress())
     def showClusterXCorrAll(self):
         exec_command("cd ..;python xcorrel_all.py")
     def showDyad(self):
+        print "Aktuellle Dyade"+self.v.get()
         exec_command("cd ..;python vis_dyade.py "+str(self.ids[self.cur]))
     def showXCorr(self):
         exec_command("cd ..;python xcorrel.py "+str(self.ids[self.cur]))
@@ -75,7 +85,7 @@ class App:
         
         f4=Frame(f3)
         f4.pack(fill=BOTH,expand=1)
-        scrollbar=Scrollbar(f4,orient=VERTICAL)
+        scrollbar=Scrollbar(f4,orient=VERTICAL) 
         self.list=Listbox(f4,font=("Arial", 10),yscrollcommand=scrollbar.set,selectmode=MULTIPLE,selectbackground="lightblue",selectforeground="white")
         scrollbar.config(command=self.list.yview)
         for item in self.ids:
@@ -96,11 +106,11 @@ class App:
         ("2x8", "4"),
         ]
 
-        v = StringVar()
-        v.set("L") # initialize
+        self.v = StringVar()
+        self.v.set("L") # initialize
     
         for text, mode in MODES:
-            b = Radiobutton(f7, text=text,variable=v, value=mode)
+            b = Radiobutton(f7, text=text,variable=self.v, value=mode)
             b.pack(anchor=W)
         
         f5=LabelFrame(f2,text="Optionen")
