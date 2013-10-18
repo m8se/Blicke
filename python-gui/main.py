@@ -41,11 +41,11 @@ class App:
         print "cd ..;python gruppen_darstellen.py '"+str(self.getSelectedDyads())+"' "+str(self.getCurrentStress())
         exec_command("cd ..;python gruppen_darstellen.py '"+str(self.getSelectedDyads())+"' "+str(self.getCurrentStress()))
     def showClusterStaytime(self):
-        exec_command("cd ..;python staytime.py")
+        exec_command("cd ..;python staytime.py '"+str(self.getSelectedDyads())+"'")
     def showClusterCorr(self):
-        exec_command("cd ../correl;python correl.py '"+str(self.getSelectedDyads())+"' "+str(self.getCurrentStress()))
+        exec_command("cd ..;python correl/correl.py '"+str(self.getSelectedDyads())+"'")
     def showClusterXCorrAll(self):
-        exec_command("cd ..;python xcorrel_all.py")
+        exec_command("cd ..;python xcorrel_all.py '"+str(self.getSelectedDyads())+"'")
     def showDyad(self):
         print "Aktuellle Dyade: "+str(self.getSelectedPopupDyad()+"' ")
         exec_command("cd ..;python vis_dyade.py "+str(self.ids[self.cur]))
