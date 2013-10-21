@@ -6,8 +6,17 @@ class DAO:
     UNSED=2;
     STRESS=4;
     
+    @staticmethod
+    def convertToList(string):
+        tmp_reqs=string[1:-1].split(',')
+        reqs=[]
+        for i in tmp_reqs:
+            reqs+=[int(i)]
+        return reqs
+
+    
     def __init__(self):
-        self.f=open("Daten/zeitreihen.data");
+        self.f=open("Daten/zeitreihen.data")
         self.zeitreihen=pickle.load(self.f)
         self.f.close();
         

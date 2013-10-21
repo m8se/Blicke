@@ -2,13 +2,16 @@
 #	Darstellung des Cross Correlation Maximums
 
 
-import pickle
 from pylab import *
 import sys
 from scipy.signal import argrelextrema
 sys.path.append("../")
 from hierarchische_clusterung import gruppen_erzeugen
+from DAO import DAO
 
+# Glaettung der Zeitreihe mit Moving Average
+# a... Zeitreihe
+# n=3, Mittelungslaenge
 def moving_average(a, n=3) :
     ret = np.cumsum(a, dtype=float)
     return (ret[n - 1:] - ret[:1 - n]) / n
@@ -85,23 +88,23 @@ def find_maximum(cor):
 	return res
 
 
-f2=open("Daten/zeitreihen.data");
-zeitreihen=pickle.load(f2)
-dyade_num=len(zeitreihen)
-#print zeitreihen
+# Start des Programms
 
-f=open("Daten/id_lst.data");
-ids=pickle.load(f)
-print ids;
+
+dao=DAO()
+ids=DAO.convertToList(sys.argv[1])
+zeitreihen=dao.req_zeitreihen(ids,DAO.STRESS|DAO.NOT_STRESS)
+
+dyade_num=len(ids)
 
 maxs0=[];
 maxs2=[]
 tau=100
 for ind in range(len(zeitreihen)):
- 	if(ids[ind]!='299' and ids[ind]!='363'):
+ 	#if(ids[ind]!='299' and ids[ind]!='363'):
 		figure(1)
 		#Entferne alle Zustaende mit z<0 und z>16
-		print "Dyade:"+ids[ind]
+		print "Dyade:"+str(ids[ind])
 	
 		zeitreihen_trimmed_m0=[]
 		zeitreihen_trimmed_m2=[]
@@ -110,7 +113,7 @@ for ind in range(len(zeitreihen)):
 			if(i>0 and i<17): # wenn gueltiger Dyadenwert
 				zeitreihen_trimmed_m0+=[i-1]
 		
-		for i in zeitreihen[ind,2]:
+		for i in zeitreihen[ind,1]:
 			if(i>0 and i<17): # wenn gueltiger Dyadenwert
 				zeitreihen_trimmed_m2+=[i-1]
 	
@@ -151,18 +154,19 @@ groups=gruppen_erzeugen(vector_list)
 trimmed_groups=[]
 
 
-
+# Erstelle richtige Gruppen, d.h. eliminiere hinten stehende -1
 for g in groups:
     for i in range(len(g)):
         if(g[i]==-1):
             trimmed_groups+=[g[:i-1]]
             break
 
-
+# Ordne die Gruppen alphabetisch
 ordered_groups = sorted(trimmed_groups, key=len)
 ordered_groups.reverse()
 
- 
+
+# Zeige die 10 groessten Gruppen an
 N_max=10 # maximal anzuzeigende Gruppen
 for g in range(N_max):
     color=rand(3,1)
