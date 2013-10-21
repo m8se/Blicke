@@ -16,7 +16,7 @@ class DAO:
 
     
     def __init__(self):
-        self.f=open("Daten/zeitreihen.data");
+        self.f=open("Daten/zeitreihen.data")
         self.zeitreihen=pickle.load(self.f)
         self.f.close();
         

@@ -36,21 +36,24 @@ class App:
     def getSelectedPopupDyad(self):
         return self.ids[self.ids_len-1-self.cur]
     def selectAll(self):
-        self.list.selection_set(0,END)
+        if(len(self.list.selection_get())!=self.ids_len):
+            self.list.selection_set(0,END)
+        else:
+            self.list.selection_set(0,0)
     def showClusterProb(self):
-        print "cd ..;python gruppen_darstellen.py '"+str(self.getSelectedDyads())+"' "+str(self.getCurrentStress())
-        exec_command("cd ..;python gruppen_darstellen.py '"+str(self.getSelectedDyads())+"' "+str(self.getCurrentStress()))
+        print "python gruppen_darstellen.py '"+str(self.getSelectedDyads())+"' "+str(self.getCurrentStress())
+        exec_command("python gruppen_darstellen.py '"+str(self.getSelectedDyads())+"' "+str(self.getCurrentStress()))
     def showClusterStaytime(self):
-        exec_command("cd ..;python staytime.py '"+str(self.getSelectedDyads())+"'")
+        exec_command("python staytime.py '"+str(self.getSelectedDyads())+"'")
     def showClusterCorr(self):
-        exec_command("cd ..;python correl/correl.py '"+str(self.getSelectedDyads())+"'")
+        exec_command("python correl/correl.py '"+str(self.getSelectedDyads())+"'")
     def showClusterXCorrAll(self):
-        exec_command("cd ..;python xcorrel_all.py '"+str(self.getSelectedDyads())+"'")
+        exec_command("python xcorrel_all.py '"+str(self.getSelectedDyads())+"'")
     def showDyad(self):
         print "Aktuellle Dyade: "+str(self.getSelectedPopupDyad()+"' ")
-        exec_command("cd ..;python vis_dyade.py "+str(self.ids[self.cur]))
+        exec_command("python vis_dyade.py "+str(self.ids[self.cur]))
     def showXCorr(self):
-        exec_command("cd ..;python xcorrel.py "+str(self.ids[self.cur]))
+        exec_command("python xcorrel.py "+str(self.ids[self.cur]))
     def do_popup(self,event):
         # display the popup menu 
         self.cur=self.list.nearest(event.y)
@@ -62,18 +65,12 @@ class App:
     
     def __init__(self,master):
         # Alle Dyandennr. einlesen
-        
-        f=open("../Daten/zeitreihen.data");
-        zeitreihen=pickle.load(f)
-	f.close()
-        #print zeitreihen
 
-        dyade_num=len(zeitreihen)
-        f=open("../Daten/id_lst.data");
-        self.ids=pickle.load(f)
-        self.ids_len=len(self.ids)
-	f.close()
         
+        dao=DAO()
+        self.ids=dao.id_lst
+        self.ids_len=len(self.ids)
+        dyade_num=self.ids_len
         # Aufbau der GUI
         
         frame=Frame(master)
