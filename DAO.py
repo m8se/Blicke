@@ -49,7 +49,7 @@ class DAO:
             if stress >= 2 ** i:
                 self.stress_lst.append(i)
                 stress -= 2 ** i
-        self.stress_lst.reverse
+        self.stress_lst.reverse()
         self.ans = zeros([len(reqs),len(self.stress_lst), 4510])
         self.req_it = 0  # anzahl der bearbeiteten anfragen
         for req in reqs:

@@ -9,13 +9,16 @@ from hierarchische_clusterung import gruppen_erzeugen
 from DAO import DAO
 import sys
 daten=DAO()
-id_lst=sys.argv[1]
+id_lst_c=sys.argv[1][1:-1].split(',')
 stress=sys.argv[2]
-print id_lst
-print "Stress:",stress
 Titel='Normal'
-
-gruppen=gruppen_erzeugen(daten.req_rel_auf([299,240,325,245],DAO.STRESS)[:,0,:])
+id_lst=[]
+for i in id_lst_c:
+	print i
+	id_lst.append(int(i))
+	print id_lst
+print type(id_lst)
+gruppen=gruppen_erzeugen(daten.req_rel_auf(id_lst,DAO.STRESS)[:,0,:])
 
 #Doppelte Gruppen werden entfernt
 
@@ -47,9 +50,8 @@ def gruppen_doppelt(gruppen):
 			i+=1
 		else:
 			del gruppen[i]
-	print gruppen
+	print "gruppen:",gruppen, "laenge:", len(gruppen[0][:])
 	gruppen.append(range(len(gruppen[0][:])))
-	print gruppen
 
 gruppen_doppelt(gruppen)
 #Die Laengen der Arrays werden ermittelt
@@ -58,11 +60,9 @@ def laengen(gruppen):
 	for i in range(len(gruppen)):
 		zahl=0
 		for l in range(len(gruppen[0][:])):
-			print "hep", gruppen[i][l]
 			if gruppen[i][l]==-1:
-				print "break"
 				break
-			zahl=l
+			zahl=l+1
 		laenge[i]=zahl
 	return laenge
 laenge=laengen(gruppen)
@@ -79,6 +79,7 @@ def sortieren(gruppen,laenge):
 				laenge[l]=laenge[i]
 				laenge[i]=tmp
 sortieren(gruppen,laenge)
+print "sortierte Gruppen:", gruppen
 ##############
 #Der Plot von Kaesten mit Textfuellung an einer bestimmten Position
 font_size=6
@@ -98,6 +99,7 @@ def draw_dyade(x,y,dyads):
 	plt.xlim([0,xlen])
 	plt.ylim([0,ylen])
 	for i in range(dyade_len):
+		print "dyads:", dyads,len(dyads), type(dyads)
 		if(i!=(dyade_len-1)):
         		plt.text((x+i)*dx,(y+0.5)*dy,str(int(dyads[i]))+",",size=font_size)
 		else:
@@ -136,8 +138,10 @@ def zuordnen(gruppen):
 				break
 
 	return ref
-print gruppen
+print "Gruppen:", gruppen
 a=zuordnen(gruppen)
+print "a:",a
+print "laenge:", laenge
 #
 #Diagramm mit den Gruppen wird erstellt
 def diagramm(ref,gruppen,laenge):
@@ -146,16 +150,17 @@ def diagramm(ref,gruppen,laenge):
 	draw_dyade(0,0,id_lst)
 	for i in range(len(laenge)):
 		for l in range(6):
+			print ref[i,l] 
 			if ref[i,l]==-1:
-				break
-			uebergabe=zeros([laenge[int(ref[i,l])]])
-			for z in range(int(laenge[int(ref[i,l])])):
-				uebergabe[z]=id_lst[int(gruppen[int(ref[i,l])][z])]
-			print str(uebergabe[0])
-			draw_dyade(int(stelle[i,0]),int(stelle[i,1]),uebergabe)
-			stelle[ref[i,l],0]=stelle[i,0]
-			stelle[ref[i,l],1]=stelle[i,1]+1
-			stelle[i,0]+=laenge[ref[i,l]]
+				uebergabe=zeros([laenge[int(ref[i,l])]])
+				for z in range(int(laenge[int(ref[i,l])])):
+					uebergabe[z]=id_lst[int(gruppen[int(ref[i,l])][z])]
+				print str(uebergabe[0])
+			
+	draw_dyade(int(stelle[i,0]),int(stelle[i,1]),uebergabe)
+				stelle[ref[i,l],0]=stelle[i,0]
+				stelle[ref[i,l],1]=stelle[i,1]+1
+				stelle[i,0]+=laenge[ref[i,l]]
 	plt.title(Titel)
 	plt.show()
 diagramm(a,gruppen,laenge)
