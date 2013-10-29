@@ -6,8 +6,10 @@ from numpy.random import random
 from numpy import ones
 from pylab import figure,hist,mean,text
 import sys
+import numpy
 sys.path.append(".")
 from DAO import DAO
+import tkMessageBox
 
 
 dao=DAO();
@@ -52,6 +54,13 @@ N=50
 X=random(N)*xmax
 Y=random(N)*ymax
 
+for c in range(dyade_num):
+	i=cors[:,1][c]
+	if(numpy.isnan(i)):
+		tkMessageBox.showinfo("Dyaden","Dyade "+str(reqs[c])+" kann zu fehlerhaften Darstellungen fuehren wegen nicht definiertem CorrCoeff.")
+		print "contains Errors"
+
+print str(cors[:,1])
 
 plot(cors[:,0],cors[:,1],'o')
 plot(X,Y,'x')
@@ -63,25 +72,28 @@ for i in range(dyade_num):
 		text(cors[i,0],cors[i,1],str(reqs[i]))
 		
 figure(2)
-hist(cors[:,1])
-xlabel("Korr.koeff. nach Stress")
+hist(cors[:,0])
+xlabel("Korr.koeff. vor Stress")
 
 
 
-"""
+
 figure(3)
 diff=cors[:,1]-cors[:,0]
+for i in range(len(diff)):
+	print str(reqs[i])+":"+str(cors[i,1])
+
 hist(diff)
 xlabel("Aenderung des Korr.koeff.")
 ylabel("Absolute Haeufigkeit")
 print mean(diff)
 
+
+
 figure(4)
-print cors[:,1]
 hist(cors[:,0])
-plot(cors[:,0],ones(len(cors[:,0])),'o')
 xlabel("Korr.koeff. vor Stress")
 
-"""
+
 
 show()
