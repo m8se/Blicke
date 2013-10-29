@@ -235,6 +235,17 @@ Die Aufenthaltswahrscheinlichkeiten einer Zeitreihe können einen Ortsvektor
  
 \end_layout
 
+\begin_layout Standard
+Analog zu dieser Herangehensweise lässt sich aus einer kombination von gestresst
+en und nicht gestressten Aufenthaltswahrscheinlichkeiten ein 32-dimensionaler
+ 
+\begin_inset Formula $P^{\prime}$
+\end_inset
+
+-Raum definieren.
+ 
+\end_layout
+
 \begin_layout Subsection
 Methode der Hierarchischen Clusterung
 \end_layout
@@ -1208,22 +1219,16 @@ Auswertungsautomatisierung
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Tja, da kommt noch was
-\end_layout
-
-\end_inset
-
-
+\noindent
+Weiterhin wurde eine grafische Benutzeroberfläche erstellt, mit der sich
+ die vorgestellten Auswertungsmethoden auf eine selbst getroffene Auswahl
+ an Dyaden anwenden lässt.
+ 
 \end_layout
 
 \begin_layout Standard
 \noindent
-Weiterhin wurde ein Tool erstellt, mit dem sich mit Übergabe der Dyadennummer
- die Zeitreihen von Mutter und Kind sowohl für vor als auch nach Stresseinfluss
+Zeitreihen von Mutter und Kind sowohl für vor als auch nach Stresseinfluss
  darstellen lassen.
  Ein Beispiel ist in Abbildung 
 \begin_inset CommandInset ref
