@@ -8,32 +8,7 @@ from pylab import show, plot, figure, subplot, axis,ylim,xlim , title, xlabel, y
 from hierarchische_clusterung import gruppen_erzeugen
 from DAO import DAO
 import sys
-daten=DAO()
-id_lst_c=sys.argv[1][1:-1].split(',')
-stress=sys.argv[2]
-Titel='Normal'
-id_lst=[]
-for i in id_lst_c:
-	print i
-	id_lst.append(int(i))
-	print id_lst
-print type(id_lst)
-gruppen=gruppen_erzeugen(daten.req_rel_auf(id_lst,DAO.STRESS)[:,0,:])
 
-#Doppelte Gruppen werden entfernt
-
-#	for i in range(len(gruppen[0,:])):
-#		for l in range(len(gruppen[0,:])):
-#			if gruppen[i,l]==-1:
-#				break
-#			for k in range(1,len(gruppen[0,:])-l):
-#				if gruppen[i,l+k]==-1:
-#					break	
-#				if gruppen[i,l]>gruppen[i,l+k]:
-#					tmp=gruppen[i,l]
-#					gruppen[i,l]=gruppen[i,l+k]
-#					gruppen[i,l+k]=tmp
-gruppen=list(gruppen)
 def gruppen_doppelt(gruppen):
 	i=0
 	while i<(len(gruppen)-1):
@@ -50,10 +25,9 @@ def gruppen_doppelt(gruppen):
 			i+=1
 		else:
 			del gruppen[i]
-	print "gruppen:",gruppen, "laenge:", len(gruppen[0][:])
 	gruppen.append(range(len(gruppen[0][:])))
 
-gruppen_doppelt(gruppen)
+
 #Die Laengen der Arrays werden ermittelt
 def laengen(gruppen):
 	laenge=zeros(len(gruppen))
@@ -65,8 +39,7 @@ def laengen(gruppen):
 			zahl=l+1
 		laenge[i]=zahl
 	return laenge
-laenge=laengen(gruppen)
-print "l:",laenge
+
 #gruppe werden der Laenge nach sortiert
 def sortieren(gruppen,laenge):
 	for i in range(len(laenge)):
@@ -78,8 +51,8 @@ def sortieren(gruppen,laenge):
 				tmp=laenge[l]
 				laenge[l]=laenge[i]
 				laenge[i]=tmp
-sortieren(gruppen,laenge)
-print "sortierte Gruppen:", gruppen
+
+
 ##############
 #Der Plot von Kaesten mit Textfuellung an einer bestimmten Position
 font_size=6
@@ -99,7 +72,6 @@ def draw_dyade(x,y,dyads):
 	plt.xlim([0,xlen])
 	plt.ylim([0,ylen])
 	for i in range(dyade_len):
-		print "dyads:", dyads,len(dyads), type(dyads)
 		if(i!=(dyade_len-1)):
         		plt.text((x+i)*dx,(y+0.5)*dy,str(int(dyads[i]))+",",size=font_size)
 		else:
@@ -123,7 +95,7 @@ frame1.axes.get_yaxis().set_visible(False)
 ###############
 #Die Gruppen werden fuer die Darstellung sortiert
 def zuordnen(gruppen):
-	ref=zeros([len(gruppen),6])-1
+	ref=zeros([len(gruppen),12])-1 #Jede Gruppe wird der groesseren Gruppe zugeordnet mit der sie die groesst moegliche Ueberschneidung hat  
 	for i in range(len(gruppen)-1):
 		l=0
 		while True:
@@ -131,39 +103,69 @@ def zuordnen(gruppen):
 			if gruppen[-1-i][0] in gruppen[-1-l-i]:
 				k=0
 				while True:
-					if ref[-1-l-i][k]==-1:
-						ref[-1-l-i][k]=len(gruppen)-1-i
+					if ref[-1-l-i][k]==-1: #freien Platz suchen 
+						ref[-1-l-i][k]=len(gruppen)-i-1
 						break
 					k+=1
 				break
 
 	return ref
-print "Gruppen:", gruppen
-a=zuordnen(gruppen)
-print "a:",a
-print "laenge:", laenge
+
 #
 #Diagramm mit den Gruppen wird erstellt
 def diagramm(ref,gruppen,laenge):
 	stelle=zeros([len(laenge),2])-1
 	stelle[0,:]=([0,1])
 	draw_dyade(0,0,id_lst)
-	for i in range(len(laenge)):
-		for l in range(6):
-			print ref[i,l] 
-			if ref[i,l]==-1:
+	for i in range(len(laenge)-1):
+		for l in range(6):	
+			if ref[i,l]!=-1:
 				uebergabe=zeros([laenge[int(ref[i,l])]])
 				for z in range(int(laenge[int(ref[i,l])])):
 					uebergabe[z]=id_lst[int(gruppen[int(ref[i,l])][z])]
-				print str(uebergabe[0])
-			
-	draw_dyade(int(stelle[i,0]),int(stelle[i,1]),uebergabe)
+				draw_dyade(int(stelle[i,0]),int(stelle[i,1]),uebergabe)
 				stelle[ref[i,l],0]=stelle[i,0]
 				stelle[ref[i,l],1]=stelle[i,1]+1
 				stelle[i,0]+=laenge[ref[i,l]]
 	plt.title(Titel)
 	plt.show()
-diagramm(a,gruppen,laenge)
+
 
 #################
+daten=DAO()
+id_lst_c=sys.argv[1][1:-1].split(',')
+stress=int(sys.argv[2])
+if stress==1:
+	Titel='Stressfrei'
+elif stress==4:
+	Titel='Gestresst'
+elif stress==5:
+	Titel='Stressfrei & Gestresst'
+elif stress==8:
+	Titel='Stressfrei & Gestresst'
+id_lst=[]
+for i in id_lst_c:
+	id_lst.append(int(i))
+daten_roh=daten.req_rel_auf(id_lst,stress)
+if stress==5:
+	for i in id_lst_c:
+		id_lst.append(int(i))
+st_number=len(daten_roh[0,:,0])
+dyad_number=len(daten_roh[:,0,0])
+dim_number=len(daten_roh[0,0,:])
+daten_ready=[]
+daten_ready=zeros([st_number*dyad_number,dim_number])
+for i in range(st_number):
+	daten_ready[i*dyad_number:(i+1)*dyad_number][:]=daten_roh[:,i,:]
+#daten_ready=daten.req_rel_auf(id_lst,DAO.STRESS)[:,0,:]
+print "ready", daten_ready, "\n"
+
+#gruppen=list(gruppen_erzeugen(daten.req_rel_auf(id_lst,DAO.STRESS)[:,0,:]))
+gruppen=list(gruppen_erzeugen(daten_ready))
+print gruppen
+gruppen_doppelt(gruppen)
+laenge=laengen(gruppen)
+sortieren(gruppen,laenge)
+a=zuordnen(gruppen)
+diagramm(a,gruppen,laenge)
 

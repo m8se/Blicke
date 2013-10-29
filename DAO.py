@@ -27,15 +27,14 @@ class DAO:
         self.f=open("Daten/id_lst.data")
         self.id_lst=pickle.load(self.f)
         self.f.close();
-        print
-        
-        
-        print "Init"
-    
     def req_rel_auf(self,reqs,stress):    
+	if stress==8:
+		stress=5
+		self.cat=1
+	else:
+		self.cat=0
         self.stress_lst=[]
         for i in ([3,2,1,0]):
-            print i, stress
             if stress>=2**i:
                 self.stress_lst.append(i)
                 stress-=2**i
@@ -44,12 +43,15 @@ class DAO:
         for req in reqs:
             self.id_nr=self.id_lst.index(str(req))
             self.st_it=0
-            print "hey"
             for self.st in self.stress_lst:
-                print "ho"
                 self.ans[self.req_it,self.st_it,:16]=self.rel_auf[self.id_nr,self.st,:]
                 self.st_it+=1
             self.req_it+=1
+	if self.cat==1:
+		self.ans_temp=zeros([len(reqs),1,32])
+		self.ans_temp[:,0,:16]=self.ans[:,0,:]
+		self.ans_temp[:,0,16:]=self.ans[:,1,:]
+		self.ans=self.ans_temp
         return self.ans[:]
                     
     def req_zeitreihen(self,reqs,stress):
