@@ -20,11 +20,13 @@ def find_maximum(cor):
 	N=2
 	avg=moving_average(cor,N)
 	avg=avg[:len(avg)-N]
-	plot(avg)
+	
+    #plot(avg)   Debugging
+    
 	#noch evt. Rauschen beruecksichtigen
 	maxs=argrelextrema(avg,np.greater)[0]
-	for m in maxs:
-		plot(m,avg[m],'o')
+	#for m in maxs:
+	#	plot(m,avg[m],'o')
 	
 	# Check for saddle points
 	saddles=[]
@@ -54,7 +56,6 @@ def find_maximum(cor):
 
 		if(avg[index]<avg[s] and neg):
 			maxs+=[s]
-			print "yep"
 			print "New Maximum"+str(s)
 
 
@@ -132,16 +133,17 @@ for ind in range(len(zeitreihen)):
 	
 		# Finde das naechstliegende lokale Maximum
 		print len(cor0)
-		figure(2)
+        
+		#figure(2) #Debugging, um die Korrektheit des Optimierungsverfahrens zu testen
 		maxs0+=[find_maximum(cor0)]
 		maxs2+=[find_maximum(cor2)]
+		
 	
 figure(3)
 plot(maxs0,maxs2,'o')
 
 #Klassifiziere die Daten mit der HC Methode
 
-print "Laber:",maxs0[3],maxs2[3]
 Maxs0=array(maxs0)
 Maxs2=array(maxs2)
 vector_list=zeros([len(Maxs0),2])
@@ -151,27 +153,39 @@ for k in range(len(Maxs0)):
 print vector_list
 groups=gruppen_erzeugen(vector_list)
 
+
+
 trimmed_groups=[]
 
 
 # Erstelle richtige Gruppen, d.h. eliminiere hinten stehende -1
 for g in groups:
-    for i in range(len(g)):
-        if(g[i]==-1):
-            trimmed_groups+=[g[:i-1]]
-            break
+    g_list=list(g)
+    try:
+        ind=g_list.index(-1)
+        trimmed_groups+=[g[:ind]]
+    except:
+        trimmed_groups+=[g]
 
 # Ordne die Gruppen alphabetisch
 ordered_groups = sorted(trimmed_groups, key=len)
 ordered_groups.reverse()
 
+print "Gruppen:",groups
+print "Trimmed Gruppen:",trimmed_groups
+print "Sorted Gruppen:",trimmed_groups
+
 
 # Zeige die 10 groessten Gruppen an
 N_max=10 # maximal anzuzeigende Gruppen
+if(N_max>len(ordered_groups)):
+    N_max=len(ordered_groups)
 for g in range(N_max):
     color=rand(3,1)
     for i in ordered_groups[g]:
         scatter(maxs0[int(i)], maxs2[int(i)], s=g*80,edgecolors=color, facecolors='none', linewidths=2, label='Class 2')
 
+for i in range(len(maxs0)):
+    text(maxs0[i], maxs2[i],ids[i])
 #h
 show()

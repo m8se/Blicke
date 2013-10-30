@@ -79,7 +79,7 @@ plot(ones(len(freqs[:,1])),freqs[:,1],'o')
 subplot(221)
 #xlim([0,1])
 #ylim([0,1])
-for i in range(55):
+for i in range(dyade_num):
 	text(freqs[i,0],freqs[i,1],dyaden_ids[i])
 	
 
@@ -110,21 +110,30 @@ for k in range(len(freqs[:,2])):
 # use hierarchic clustering
 
 groups=gruppen_erzeugen(vector_list)
+
+print "Groups: "+str(groups)
 trimmed_groups=[]
 
 for g in groups:
-	for i in range(len(g)):
-		if(g[i]==-1):
-			trimmed_groups+=[g[:i-1]]
-			break
+    g_list=list(g)
+    try:
+        ind=g_list.index(-1)
+        trimmed_groups+=[g[:ind]]
+    except:
+        trimmed_groups+=[g]
+
+print "Trimmed groups: "+str(trimmed_groups)
 
 
 
-ordered_groups = sorted(trimmed_groups, key=len)
-ordered_groups.reverse()
+sorted_groups = sorted(trimmed_groups, key=len)
+sorted_groups.reverse()
+
+print "Sorted groups: "
+
 
 # print groups
-for g in ordered_groups:
+for g in sorted_groups:
 	print "[",
 	for el in g:
 		print dyaden_ids[int(el)],
@@ -134,11 +143,14 @@ for g in ordered_groups:
 
 figure(1)
 
-N_max=10 # maximal anzuzeigende Gruppen
+N_max=5 # maximal anzuzeigende Gruppen
+if(N_max>len(sorted_groups)):
+    N_max=len(sorted_groups)
+    
 for g in range(N_max):
 	color=rand(3,1)
-	for i in ordered_groups[g]:
+	for i in sorted_groups[g]:
 		scatter(freqs[:,0][i], freqs[:,1][i], s=g*80,edgecolors=color, facecolors='none', linewidths=2, label='Class 2')
-for i in range(55):
+for i in range(dyade_num):
 	text(freqs[i,0],freqs[i,1],dyaden_ids[i])
 show()	

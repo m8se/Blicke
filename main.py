@@ -4,6 +4,7 @@ import sys
 import time
 import tkFont 
 from numpy.distutils.exec_command import exec_command
+import tkMessageBox
 sys.path.append("../")
 from DAO import DAO
 
@@ -12,11 +13,16 @@ class App:
     list;
     
     def getCurrentStress(self):
-        curSel=int(self.v.get())
-        if(curSel==1):return DAO.NOT_STRESS
-        elif(curSel==2):return DAO.STRESS
-        elif(curSel==3):return DAO.STRESS|DAO.NOT_STRESS
-        elif(curSel==4): return 8
+        try:
+            curSel=int(self.v.get())
+            if(curSel==1):return DAO.NOT_STRESS
+            elif(curSel==2):return DAO.STRESS
+            elif(curSel==3):return DAO.STRESS|DAO.NOT_STRESS
+            elif(curSel==4): return 8
+        except:
+            tkMessageBox.showinfo("Dyaden","Bitte waehlen Sie ein Stresstyp aus."
+)
+            
         
     def init_popup(self,root):
         
@@ -26,23 +32,26 @@ class App:
         self.popup.add_separator()
         self.popup.add_command(label="Home")
     
-    
     def getSelectedDyads(self):
         cur_sel=self.list.curselection();
-        cur_ids=([])
-        for i in cur_sel:
-            cur_ids+=[int(self.ids[self.ids_len-1-int(i)])]
-        return cur_ids;
+        if(len(cur_sel)==0):
+            tkMessageBox.showinfo("Dyaden","Bitte waehlen Sie mindestens eine Dyade aus!")
+        else:           
+            cur_ids=([])
+            for i in cur_sel:
+                cur_ids+=[int(self.ids[self.ids_len-1-int(i)])]
+            return cur_ids;
     def getSelectedPopupDyad(self):
         return self.ids[self.ids_len-1-self.cur]
     def selectAll(self):
-        if(len(self.list.selection_get())!=self.ids_len):
+        if(len(self.list.curselection())!=self.ids_len):
             self.list.selection_set(0,END)
         else:
-            self.list.selection_set(0,0)
+            self.list.select_clear(0,END)
     def showClusterProb(self):
-        print "python gruppen_darstellen.py '"+str(self.getSelectedDyads())+"' "+str(self.getCurrentStress())
-        exec_command("python gruppen_darstellen.py '"+str(self.getSelectedDyads())+"' "+str(self.getCurrentStress()))
+        self.stress=self.getCurrentStress()
+        if(self.stress!=None):
+            exec_command("python gruppen_darstellen.py '"+str(self.getSelectedDyads())+"' "+str(self.stress))
     def showClusterStaytime(self):
         exec_command("python staytime.py '"+str(self.getSelectedDyads())+"'")
     def showClusterCorr(self):
@@ -113,8 +122,8 @@ class App:
         MODES = [
         ("Stressfrei", "1"),
         ("Gestresst", "2"),
-        ("32 zus.", "3"),
-        ("2x8", "4"),
+        ("Beide Typen", "3"),
+        ("8X8", "4"),
         ]
 
         self.v = StringVar()
