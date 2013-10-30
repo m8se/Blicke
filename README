@@ -1,3 +1,23 @@
+Benötigte Bibliotheken:
+
+math
+matplotlib
+numpy
+pickle
+pylab
+scipy
+random
+sys
+tkFont
+Tkinter
+time
+
+
+mit einlesen.py werden Arrays für die Messdaten und die Nummern der Dyaden erzeugt.
+aufenthalt.py erzeugt einen Array mit den Aufenthaltswahrscheinlichkeiten
+hierarchische_clusterung.py enthaelt funktionen für die hierarchische CLusterung
+gruppen_darstellung.py gibt einem die Möglichkeit die hierarchische Clusterung grafisch darzustellen.
+
 draw.py: 		Bibliothek zum Generieren von Klassifikationsspektren
 				wird verwendet bei der Clusterung nach relativer Aufenthaltshäufigkeit
 	
