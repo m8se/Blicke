@@ -1,5 +1,5 @@
 #! /usr/bin/env python
-from pylab import show, plot, xlabel, ylabel
+from pylab import show, plot, xlabel, ylabel, rand, scatter
 import pickle
 from scipy import zeros, corrcoef
 from numpy.random import random
@@ -8,6 +8,8 @@ from pylab import figure,hist,mean,text
 import sys
 import numpy
 sys.path.append(".")
+from hierarchische_clusterung import gruppen_erzeugen 
+sys.path.append("../")
 from DAO import DAO
 import tkMessageBox
 
@@ -70,13 +72,53 @@ ylabel("Korr.koeff. nach Stress")
 for i in range(dyade_num):
 	if(reqs[i]!=247):	# Scliesse ungeeignet Dyaden aus
 		text(cors[i,0],cors[i,1],str(reqs[i]))
+
+
+vector_list=zeros([len(cors),2])
+
+for k in range(len(cors)):
+	vector_list[k]=cors[k][:1]
+
+groups=gruppen_erzeugen(vector_list)
+
+trimmed_groups=[]
+
+
+# Erstelle richtige Gruppen, d.h. eliminiere hinten stehende -1
+for g in groups:
+    g_list=list(g)
+    try:
+        ind=g_list.index(-1)
+        trimmed_groups+=[g[:ind]]
+    except:
+        trimmed_groups+=[g]
+
+# Ordne die Gruppen alphabetisch
+ordered_groups = sorted(trimmed_groups, key=len)
+ordered_groups.reverse()
+
+print "Gruppen:",groups
+print "Trimmed Gruppen:",trimmed_groups
+print "Sorted Gruppen:",trimmed_groups
+
+# Zeige die 10 groessten Gruppen an
+N_max=10 # maximal anzuzeigende Gruppen
+if(N_max>len(ordered_groups)):
+    N_max=len(ordered_groups)
+for g in range(N_max):
+    color=rand(3,1)
+    for i in ordered_groups[g]:
+        scatter(cors[int(i),0], cors[int(i),1], s=g*80,edgecolors=color, facecolors='none', linewidths=2, label='Class 2')
+
+for i in range(len(cors)):
+    text(cors[i,0], cors[i,1],reqs[i])
+
+
 		
 figure(2)
 hist(cors[:,0])
 xlabel("Korr.koeff. vor Stress")
-
-
-
+ylabel("Absolute Haeufigkeit")
 
 figure(3)
 diff=cors[:,1]-cors[:,0]
@@ -92,6 +134,7 @@ print mean(diff)
 
 figure(4)
 hist(cors[:,0])
+ylabel("Absolute Haeufigkeit")
 xlabel("Korr.koeff. vor Stress")
 
 

@@ -7,6 +7,13 @@ from DAO import DAO
 import pickle
 from pylab import *
 import sys
+
+from matplotlib import rc
+rc('font',**{'family':'sans-serif','sans-serif':['Helvetica']})
+## for Palatino and other serif fonts use:
+#rc('font',**{'family':'serif','serif':['Palatino']})
+rc('text', usetex=True)
+
 dat_loc='Daten/'
 if(len(sys.argv)!=2):
 	print "Falscher Programmaufruf:\npython vis_dyade.py <dyaden_nr>"
@@ -49,20 +56,38 @@ for m in range(3):
 
 #print zeitreihen_trimmed[0]
 title("Zustandsaenderungen vor Stress")
+subplot(211)
 plot(zeitreihen_trimmed[0]//4)
-plot(zeitreihen_trimmed[0]%4+6)
-legend(["Kind","Mutter"])
+title("Kind")
+ylabel("Zustand")
+yticks([0,1,2,3])
+subplot(212)
+plot(zeitreihen_trimmed[0]%4)
+xlabel("t")
+ylabel("Zustand")
+yticks([0,1,2,3])
+title("Mutter")
 
 figure(2)
 title("Zustandsaenderungen nach Stress")
+subplot(211)
 plot(zeitreihen_trimmed[2]//4)
-plot(zeitreihen_trimmed[2]%4+6)
-legend(["Kind","Mutter"])
+title("Kind")
+ylabel("Zustand")
+yticks([0,1,2,3])
+subplot(212)
+plot(zeitreihen_trimmed[2]%4)
+ylabel("Zustand")
+xlabel("t")
+yticks([0,1,2,3])
+title("Mutter")
 
 # Berechnung der Kreuzkorrelation:
 figure(5)
 a=list(xcorr(zeitreihen_trimmed[0]//4,zeitreihen_trimmed[0]%4,maxlags=100)[1])
 title("Cross Correlation von KuM vor Stress")
+ylabel(r"K($\tau)")
+xlabel(r"$\tau")
 print a.index(max(a))-100
 
 show()

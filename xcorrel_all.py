@@ -140,6 +140,8 @@ for ind in range(len(zeitreihen)):
 		
 	
 figure(3)
+xlabel("Maximum der Kreuzkorrelation vor Stress")
+ylabel("Maximum der Kreuzkorrelation nach Stress")
 plot(maxs0,maxs2,'o')
 
 #Klassifiziere die Daten mit der HC Methode
