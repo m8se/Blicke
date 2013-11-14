@@ -158,9 +158,16 @@ In dieser Arbeit werden von Psychologen der Universität Hamburg erhobene
  Die Blicke zu einen bestimmten Zeitpunkt wurden bereits in jeweils vier
  Zustände für die Mutter und das Kind eingeteilt.
  Bei den Müttern lag jeweils ein uns nicht bekanntes Krankheitsbild vor.
- Zur Einteilung der Dyaden in Gruppen wurden Kenngrößen wie Aufenthaltswahrschei
-nlichkeit, Korrelation und Zustandsraten für unterschiedliche Zeitreihen
- untersucht.
+ Zur Einteilung der Dyaden in Gruppen wurden Kenngrößen wie Aufent
+\begin_inset space ~
+\end_inset
+
+halts
+\begin_inset space ~
+\end_inset
+
+wahrscheinlichkeit, Korrelation und Zustandsraten für unterschiedliche Zeitreihe
+n untersucht.
  Hierzu wurde unter anderem die Methode der hierarchischen Clusterung eingeführt.
  
 \begin_inset Note Note
@@ -256,8 +263,7 @@ Ziel der hier definierten Methode ist es, die Dyaden in hierarchisch ineinand.er
  eine Gruppe kann jeweils eine oder mehrere Untergruppen enthalten.
  Um die Komplexität des Ergebnisses zu begrenzen, soll eine Überlappung
  verschiedener Gruppen vermieden werden.
- Es gibt verschiedene Methoden der Clusterung, welche bei der bestehenden
- Problematik ungeeinet sind
+ Es gibt verschiedene Methoden der Clusterung
 \begin_inset CommandInset citation
 LatexCommand cite
 key "key-2"
@@ -265,8 +271,9 @@ key "key-2"
 \end_inset
 
 .
+ Diese sind bei der bestehenden Problematik jedoch nicht ausreichend geeignet.
  Aus diesem Grund wurde hier die Methode der hierarchischen Clusterung eingeführ
-t
+t.
 \end_layout
 
 \begin_layout Standard
@@ -283,7 +290,7 @@ Als Kriterium für die Ähnlichkeit zweier
 \begin_inset Formula $\vec{P}(y)$
 \end_inset
 
- wird hier mit der euklidischen Norm definiert.
+ wird hier mit der euklidischen Metrik definiert.
  
 \begin_inset Formula 
 \[
@@ -418,15 +425,14 @@ C_{4}=\{1,2,3,4\}
 \end_layout
 
 \begin_layout Standard
-Da 
 \begin_inset Formula $C_{1}$
 \end_inset
 
-
+entspricht 
 \begin_inset Formula $C_{3}$
 \end_inset
 
-entspricht, würde man für die vier Punkte 3 unterschiedliche Cluster erhalten,
+ und somit würde man für die vier Punkte 3 unterschiedliche Cluster erhalten,
  wobei 
 \begin_inset Formula $C_{1}$
 \end_inset
@@ -439,7 +445,7 @@ entspricht, würde man für die vier Punkte 3 unterschiedliche Cluster erhalten,
 \begin_inset Formula $C_{4}$
 \end_inset
 
-ist.
+ ist.
 \end_layout
 
 \begin_layout Standard
@@ -614,133 +620,6 @@ Dyaden Gruppen unter Stress
 An dieser Stelle kann die Hypothese, dass die Cluster medizinische Muster
  widerspiegeln von Psychologen überprüft werden.
  
-\end_layout
-
-\begin_layout Subsection
-\noindent
-Klassifikation mithilfe der SVM Methode
-\end_layout
-
-\begin_layout Standard
-Hat man mithilfe bereits bestehender Zeitreihen Dyaden in Gruppen eingeteilt,
- so ist es von Interesse, neue Dyaden den bereits gebildeten Gruppen zuordnen
- zu können.
- Ein Methode, die sich hierfür anbietet, ist die Support Vector Machine
-\begin_inset CommandInset citation
-LatexCommand cite
-key "key-1"
-
-\end_inset
-
- (SVM).
- 
-\end_layout
-
-\begin_layout Standard
-\noindent
-SVMs werden für die automatisierte Klassifizierung von Messdaten verwendet.
- Hierfür werden Testdaten mit bereits vorgenommener Klassifizierung eingelesen.
- Die Einordnung erfolgt durch Erzeugung von Hyperebenen im Zustandsraum
- in der Weise, dass der Abstand von Punkten mit unterschiedlichen Klassen
- maximal wird 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-NR
-\end_layout
-
-\end_inset
-
-.
- Durch Verwendung von entsprechenden Kernelfunktionen im höherdimensionalen
- Raum als der des Zustandsraums können sogar nichtlineare Trennungsmannigfaltigk
-eiten erzeugt werden.
- Für die Umsetzung wurde die Python Bibliothek scikit-learn verwendet.
- Um sich die Möglichkeiten von SVM vorzustellen, sei hier ein Beispiel dargestel
-lt.
-\end_layout
-
-\begin_layout Standard
-\noindent
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename ../Bilder/ex.png
-	lyxscale 20
-	scale 30
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Klassifikationsbeispiel mit SVM
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-Hierbei besteht der Vektorraum aus 2 Komponenten und jeder Datenpunkt kann
- in eine der 3 Klassen eingeordnet werden.
- Diese Methode wurde auf unsere Daten angewendet.
- Hierzu ein Beispiel:
-\end_layout
-
-\begin_layout Standard
-\noindent
-Aus dem obigen Klassifikationsspektrum wurde ein Vorschlag entnommen und
- die SVM dementsprechend trainiert.
- Anschließend wurden die Lerndaten von der SVM klassifiziert.
- 
-\end_layout
-
-\begin_layout Standard
-Der Klassifikationsvorschlag mit der HC Methode:
-\end_layout
-
-\begin_layout Standard
-\align center
-[1 1 1 2 2 2 2 2 2 3 3 4 4 5 5 6 6 6 6 6 6 6 6 6 6 6 6 6 6 7 7 7 7 7 7 7
- 7 7 7 7 7 7 7 7 7 7]
-\end_layout
-
-\begin_layout Standard
-Die SVM liefert nach entsprechendem Training:
-\end_layout
-
-\begin_layout Standard
-\align center
-[1 1 1 2 2 6 2 2 2 6 6 7 7 6 7 7 6 6 6 6 6 6 6 6 6 6 6 6 6 7 7 7 7 7 7 7
- 7 7 7 7 7 7 7 7 7 7] 
-\end_layout
-
-\begin_layout Standard
-Man erkennt deutlich, dass die Klassen mit geringer Mächtigkeit teilweise
- nicht mehr besetzt sind.
- Dies ließe sich jedoch mit entsprechender Gewichtung der Klassen optimieren.
- Der Vorteil zur HC Methode besteht vor allem darin, dass sehr große Datenmengen
- klassifiziert werden können, da der Lernprozess das Resultat durch die
- eingeführten Hyperebenen vollständig vorgibt.
 \end_layout
 
 \begin_layout Section
@@ -1461,6 +1340,133 @@ Cross Correlation für Dyade 361
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+\noindent
+Klassifikation mithilfe der SVM Methode
+\end_layout
+
+\begin_layout Standard
+Hat man mithilfe bereits bestehender Zeitreihen Dyaden in Gruppen eingeteilt,
+ so ist es von Interesse, neue Dyaden den bereits gebildeten Gruppen zuordnen
+ zu können.
+ Ein Methode, die sich hierfür anbietet, ist die Support Vector Machine
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-1"
+
+\end_inset
+
+ (SVM).
+ 
+\end_layout
+
+\begin_layout Standard
+\noindent
+SVMs werden für die automatisierte Klassifizierung von Messdaten verwendet.
+ Hierfür werden Testdaten mit bereits vorgenommener Klassifizierung eingelesen.
+ Die Einordnung erfolgt durch Erzeugung von Hyperebenen im Zustandsraum
+ in der Weise, dass der Abstand von Punkten mit unterschiedlichen Klassen
+ maximal wird 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+NR
+\end_layout
+
+\end_inset
+
+.
+ Durch Verwendung von entsprechenden Kernelfunktionen im höherdimensionalen
+ Raum als der des Zustandsraums können sogar nichtlineare Trennungsmannigfaltigk
+eiten erzeugt werden.
+ Für die Umsetzung wurde die Python Bibliothek scikit-learn verwendet.
+ Um sich die Möglichkeiten von SVM vorzustellen, sei hier ein Beispiel dargestel
+lt.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../Bilder/ex.png
+	lyxscale 20
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Klassifikationsbeispiel mit SVM
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Hierbei besteht der Vektorraum aus 2 Komponenten und jeder Datenpunkt kann
+ in eine der 3 Klassen eingeordnet werden.
+ Diese Methode wurde auf unsere Daten angewendet.
+ Hierzu ein Beispiel:
+\end_layout
+
+\begin_layout Standard
+\noindent
+Aus dem obigen Klassifikationsspektrum wurde ein Vorschlag entnommen und
+ die SVM dementsprechend trainiert.
+ Anschließend wurden die Lerndaten von der SVM klassifiziert.
+ 
+\end_layout
+
+\begin_layout Standard
+Der Klassifikationsvorschlag mit der HC Methode:
+\end_layout
+
+\begin_layout Standard
+\align center
+[1 1 1 2 2 2 2 2 2 3 3 4 4 5 5 6 6 6 6 6 6 6 6 6 6 6 6 6 6 7 7 7 7 7 7 7
+ 7 7 7 7 7 7 7 7 7 7]
+\end_layout
+
+\begin_layout Standard
+Die SVM liefert nach entsprechendem Training:
+\end_layout
+
+\begin_layout Standard
+\align center
+[1 1 1 2 2 6 2 2 2 6 6 7 7 6 7 7 6 6 6 6 6 6 6 6 6 6 6 6 6 7 7 7 7 7 7 7
+ 7 7 7 7 7 7 7 7 7 7] 
+\end_layout
+
+\begin_layout Standard
+Man erkennt deutlich, dass die Klassen mit geringer Mächtigkeit teilweise
+ nicht mehr besetzt sind.
+ Dies ließe sich jedoch mit entsprechender Gewichtung der Klassen optimieren.
+ Der Vorteil zur HC Methode besteht vor allem darin, dass sehr große Datenmengen
+ klassifiziert werden können, da der Lernprozess das Resultat durch die
+ eingeführten Hyperebenen vollständig vorgibt.
 \end_layout
 
 \begin_layout Section
