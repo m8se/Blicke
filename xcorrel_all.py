@@ -139,7 +139,7 @@ for ind in range(len(zeitreihen)):
 		maxs2+=[find_maximum(cor2)]
 		
 	
-figure(3)
+fig=figure(3)
 xlabel("Maximum der Kreuzkorrelation vor Stress")
 ylabel("Maximum der Kreuzkorrelation nach Stress")
 plot(maxs0,maxs2,'o')
@@ -190,4 +190,4 @@ for g in range(N_max):
 for i in range(len(maxs0)):
     text(maxs0[i], maxs2[i],ids[i])
 #h
-show()
+show(fig)

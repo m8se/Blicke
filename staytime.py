@@ -96,7 +96,7 @@ figure(5)
 #plot((freqs[:,1]-freqs[:,0])/freqs[:,0],ones(len(freqs[:,1])),'o')
 hist((freqs[:,1]-freqs[:,0])/freqs[:,0])
 xlabel("relative Aenderung der durchschnittlichen Zustandsaenderungsrate")
-ylabel("Ab Haeufigkeit")
+ylabel("Absolute Haeufigkeit")
 
 
 data=[freqs[:,0],freqs[:,2]]
