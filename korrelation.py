@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 from numpy import zeros, corrcoef
 import pickle
+
 daten=open("Daten/rel_aufenthalt.data", "r")
 rel_aufenthalt=pickle.load(daten)
 daten.close

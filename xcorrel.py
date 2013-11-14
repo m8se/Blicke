@@ -9,6 +9,13 @@ from pylab import *# plot, ylim, show, title
 import sys
 from scipy.signal import argrelextrema
 dat_loc='Daten/'
+
+from matplotlib import rc
+rc('font',**{'family':'sans-serif','sans-serif':['Helvetica']})
+## for Palatino and other serif fonts use:
+#rc('font',**{'family':'serif','serif':['Palatino']})
+rc('text', usetex=True)
+
 def moving_average(a, n=3) :
     ret = np.cumsum(a, dtype=float)
     return (ret[n - 1:] - ret[:1 - n]) / n
@@ -132,6 +139,8 @@ for i in zeitreihe_stress:
 
 # Berechnung der Kreuzkorrelation:
 figure(5)
+xlabel(r"$\tau")
+ylabel(r"XCorr(\tau)")
 cor=list(xcorr(array(zeitreihen_trimmed_m0)//4,array(zeitreihen_trimmed_m0)%4,maxlags=100)[1])
 title("Cross Correlation von KuM vor Stress")
 

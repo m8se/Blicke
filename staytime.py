@@ -93,10 +93,10 @@ ylabel("Absolute Haeufigkeit")
 
 
 figure(5)
-plot((freqs[:,1]-freqs[:,0])/freqs[:,0],ones(len(freqs[:,1])),'o')
-#hist((freqs[:,2]-freqs[:,0])/freqs[:,0],50)
+#plot((freqs[:,1]-freqs[:,0])/freqs[:,0],ones(len(freqs[:,1])),'o')
+hist((freqs[:,1]-freqs[:,0])/freqs[:,0])
 xlabel("relative Aenderung der durchschnittlichen Zustandsaenderungsrate")
-ylabel("relative Haeufigkeit")
+ylabel("Ab Haeufigkeit")
 
 
 data=[freqs[:,0],freqs[:,2]]
