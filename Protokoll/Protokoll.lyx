@@ -1223,21 +1223,126 @@ Auswertungsautomatisierung
 Weiterhin wurde eine grafische Benutzeroberfläche erstellt, mit der sich
  die vorgestellten Auswertungsmethoden auf eine selbst getroffene Auswahl
  an Dyaden anwenden lässt.
+ Durch einen Rechtsklick auf eine einzelne Dyade lässt sich die Kreuzkorrelation
+ sowie die Zustandsänderungsrate darstellen.
+ Mit Hilfe der Kreuzkorrelation lassen sich Aussagen über den Beziehungstyp
+ von Mutter und Kind treffen, d.h.
+ ob das Verhalten der Mutter dem des Kindes folgt oder umgekehrt, indem
+ das Maximum der Funktion in der Nähe des Nullpunkts bestimmt wird.
+ Die Optionen 
+\begin_inset Quotes eld
+\end_inset
+
+Stressfrei
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Gestresst
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Beide Typen
+\begin_inset Quotes erd
+\end_inset
+
+ und 
+\begin_inset Quotes eld
+\end_inset
+
+8x8
+\begin_inset Quotes erd
+\end_inset
+
+ haben lediglich Einfluss auf die Clusterung nach Aufenthaltswahrscheinlichkeite
+n.
+ Die Optionen 
+\begin_inset Quotes eld
+\end_inset
+
+Stressfrei
+\begin_inset Quotes erd
+\end_inset
+
+und 
+\begin_inset Quotes eld
+\end_inset
+
+Gestresst
+\begin_inset Quotes erd
+\end_inset
+
+ sind selbsterklärend.
+ Für die Auswahl 
+\begin_inset Quotes eld
+\end_inset
+
+Beide Typen
+\begin_inset Quotes erd
+\end_inset
+
+ werden die gestressten und ungestressten Dyaden als unterschiedliche Dyaden
+ zusammen geclustert.
+ Mit der Option 
+\begin_inset Quotes eld
+\end_inset
+
+8x8
+\begin_inset Quotes erd
+\end_inset
+
+ werden aus einer Kombination aus gestressten und ungestressten Zuständen
+ 8x8 Räume gebildet, auf die die hierarchische Clusterung angewandt wird.
  
 \end_layout
 
 \begin_layout Standard
-\noindent
-Zeitreihen von Mutter und Kind sowohl für vor als auch nach Stresseinfluss
- darstellen lassen.
- Ein Beispiel ist in Abbildung 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:"
+Die Auswahlmöglichkeiten 
+\begin_inset Quotes eld
+\end_inset
+
+Clusterung nach Zustandsänderungsrate
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Clusterung nach Korrelationskoeffizient
+\begin_inset Quotes erd
+\end_inset
+
+ und 
+\begin_inset Quotes eld
+\end_inset
+
+Clusterung nach Kreuzkorrelation
+\begin_inset Quotes erd
+\end_inset
+
+ ermöglichen eine Clusterung der Ausgewählten Dyaden anhand der jeweiligen
+ Merkmale.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Die Abbildungen können raus?
+\end_layout
 
 \end_inset
 
- dargestellt.
+
 \end_layout
 
 \begin_layout Standard
@@ -1336,14 +1441,6 @@ Cross Correlation für Dyade 361
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-\noindent
-Mit dieser lassen sich Aussagen über den Beziehungstyp von Mutter und Kind
- treffen, d.h.
- ob das Verhalten der Mutter dem des Kindes folgt oder umgekehrt, indem
- das Maximum der Funktion in der Nähe des Nullpunkts bestimmt wird.
 \end_layout
 
 \begin_layout Section
