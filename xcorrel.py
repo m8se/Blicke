@@ -20,7 +20,21 @@ def moving_average(a, n=3) :
     ret = np.cumsum(a, dtype=float)
     return (ret[n - 1:] - ret[:1 - n]) / n
 
-def find_maximum(cor):
+def find_global_maximum(cor):
+    
+    N=4
+    #noch evt. Rauschen beruecksichtigen
+    avg=moving_average(cor,N)
+    avg=avg[:len(avg)-N]
+    ylim([0,max(avg)])
+    plot(avg)
+    
+    m=cor.index(max(cor))
+    print "Largest value"+str(m)
+    plot(m-1,avg[m-1],'o')
+    show()
+
+def find_local_maximum(cor):
 	N=4
 	#noch evt. Rauschen beruecksichtigen
 	avg=moving_average(cor,N)
@@ -29,8 +43,8 @@ def find_maximum(cor):
 	plot(avg)
 
 	maxs=argrelextrema(avg,np.greater)[0]
-	for m in maxs:
-		plot(m,avg[m],'o')
+	#for m in maxs:
+	#	plot(m,avg[m],'o')
 
 	# Check for saddle points
 	saddles=[]
@@ -152,7 +166,7 @@ print len(cor)
 
 
 figure(2)
-find_maximum(cor)
+find_local_maximum(cor)
 
 """
 # Finde lokales Maximum, rechts von 0

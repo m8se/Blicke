@@ -6,6 +6,7 @@ import random
 #Pfad zum Daten-Ordner
 dat_loc="Daten/"
 # Zufaellige Wahl einea Zustandes, gewichtet durch die Zustandswahrsch.
+
 def choose_randomly(vector):
 	SUM=0
 	r=random.random()
@@ -33,6 +34,8 @@ if(len(sys.argv)!=2):
 f=open(dat_loc+"id_lst.data");
 ids=pickle.load(f)
 f.close()
+
+print ids[10]
 
 f=open(dat_loc+"zeitreihen.data");
 zeitreihen=pickle.load(f)
