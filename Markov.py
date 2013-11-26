@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 import pickle
-from pylab import title, plot, show, xlabel, ylabel, xlim , ylim, sys
+from pylab import *
 import random
 
 #Pfad zum Daten-Ordner

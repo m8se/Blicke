@@ -106,6 +106,7 @@ dyade_num = len(ids)
 
 
 def getMaximaFromDyads(ARGS):
+	global frame
 	tau = 100
 	maxs0 = []
 	maxs2 = []
@@ -127,7 +128,7 @@ def getMaximaFromDyads(ARGS):
 				zeitreihen_trimmed_m2 += [i - 1]
 	
 		# Berechnung der Kreuzkorrelation:
-	
+		frame+=1
 		if(len(zeitreihen_trimmed_m0) < tau * 2 + 1):
 			tau = len(zeitreihen_trimmed_m0) / 2 - 1			
 		cor0 = list(xcorr(array(zeitreihen_trimmed_m0) // 4, array(zeitreihen_trimmed_m0) % 4, maxlags=tau)[1])
@@ -145,26 +146,34 @@ def getMaximaFromDyads(ARGS):
 		# figure(2) #Debugging, um die Korrektheit des Optimierungsverfahrens zu testen
 		maxs0 += [find_global_maximum(cor0,ARGS)]
 		maxs2 += [find_global_maximum(cor2,ARGS)]
-		if(ARGS):
-			for i in range(len(maxs0)):
-					maxs0[i]-=100
-					maxs2[i]-=100
-		return maxs0,maxs2
+	if(ARGS):
+		for i in range(len(maxs0)):
+			maxs0[i]-=100
+			maxs2[i]-=100
+	return maxs0,maxs2
 			
 
 
  
  # Problematisch hierbei sind fehlende Datenpunkte
  # Hiermit lassen sich Aussagen ueber die Entwicklung der Reaktionszeit zwischen ,Mutter und Kind machen
+ 
+frame=0
 def clusterGlobalMaxima(ARGS):
+	global frame
 	res=getMaximaFromDyads(ARGS)
 	maxs0=res[0]
 	maxs2=res[1]
 	print maxs0
 	
-	fig = figure(3)
-	xlabel("Maximum der Kreuzkorrelation vor Stress")
-	ylabel("Maximum der Kreuzkorrelation nach Stress")
+	frame+=1
+	fig = figure(frame)
+	if(ARGS):
+		xlabel("Maximum der Kreuzkorrelation vor Stress")
+		ylabel("Maximum der Kreuzkorrelation nach Stress")
+	else:
+		xlabel("Maximalwert der Kreuzkorrelation vor Stress")
+		ylabel("Maximalwert der Kreuzkorrelation nach Stress")
 	plot(maxs0, maxs2, 'o')
 	
 	# Klassifiziere die Daten mit der HC Methode
@@ -215,23 +224,32 @@ def clusterGlobalMaxima(ARGS):
 	    
 	    
 	# Histogramme fuer die Stresstypen
-	figure(4)
+	frame+=1
+	figure(frame)
 	subplot(211)
 	xlabel("tau")
 	ylabel("Abs. Haeufigkeit")
-	title("Histogram der Cross Correlation Maxima vor Stress <max>="+str(mean(maxs0)))
+	if(ARGS):
+		title("Histogramm der Cross Correlation Maxima vor Stress <max>="+str(mean(maxs0)))
+	else:
+		title("Histogramm der Cross Correlation Maximalwerte vor Stress <max>="+str(mean(maxs0)))
 	hist(maxs0,20)
 	subplot(212)
 	xlabel("tau")
 	ylabel("Abs. Haeufigkeit")
-	title("Histogram der Cross Correlation Maxima nach Stress <max>="+str(mean(maxs2)))
+	if(ARGS):
+		title("Histogramm der Cross Correlation Maxima nach Stress <max>="+str(mean(maxs2)))
+	else:
+		title("Histogramm der Cross Correlation Maximalwerte nach Stress <max>="+str(mean(maxs2)))
 	hist(maxs2,20)
 	
 	
-	show(fig)
+	
 	
 	
 clusterGlobalMaxima(True)
-	
+clusterGlobalMaxima(False)
+
+show()
 
 

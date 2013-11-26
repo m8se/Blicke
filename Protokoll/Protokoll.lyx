@@ -138,6 +138,16 @@ status open
 
 \backslash
 newpage
+\backslash
+hyphenation{Aufent-halts-wahr-schein-lich-keit}
+\backslash
+newcommand{
+\backslash
+entspricht}{
+\backslash
+mathrel{
+\backslash
+widehat{=}}}
 \end_layout
 
 \end_inset
@@ -158,16 +168,9 @@ In dieser Arbeit werden von Psychologen der Universität Hamburg erhobene
  Die Blicke zu einen bestimmten Zeitpunkt wurden bereits in jeweils vier
  Zustände für die Mutter und das Kind eingeteilt.
  Bei den Müttern lag jeweils ein uns nicht bekanntes Krankheitsbild vor.
- Zur Einteilung der Dyaden in Gruppen wurden Kenngrößen wie Aufent
-\begin_inset space ~
-\end_inset
-
-halts
-\begin_inset space ~
-\end_inset
-
-wahrscheinlichkeit, Korrelation und Zustandsraten für unterschiedliche Zeitreihe
-n untersucht.
+ Zur Einteilung der Dyaden in Gruppen wurden Kenngrößen wie Aufenthaltswahrschei
+nlichkeit, Korrelation und Zustandsraten für unterschiedliche Zeitreihen
+ untersucht.
  Hierzu wurde unter anderem die Methode der hierarchischen Clusterung eingeführt.
  
 \begin_inset Note Note
@@ -229,7 +232,7 @@ Die Aufenthaltswahrscheinlichkeiten einer Zeitreihe können einen Ortsvektor
 \begin_inset Formula $\vec{P}$
 \end_inset
 
- im 16-dimesnionalen P-Raum definieren 
+ im 16-dimensionalen P-Raum definieren 
 \begin_inset Formula $P_{i}=P(z_{i})$
 \end_inset
 
@@ -243,7 +246,7 @@ Die Aufenthaltswahrscheinlichkeiten einer Zeitreihe können einen Ortsvektor
 \end_layout
 
 \begin_layout Standard
-Analog zu dieser Herangehensweise lässt sich aus einer kombination von gestresst
+Analog zu dieser Herangehensweise lässt sich aus einer Kombination von gestresst
 en und nicht gestressten Aufenthaltswahrscheinlichkeiten ein 32-dimensionaler
  
 \begin_inset Formula $P^{\prime}$
@@ -631,31 +634,8 @@ Dyadenklassifikation nach Zustandsänderungsraten
 \begin_layout Standard
 Die Häufigkeiten des Wechsels zwischen einzelnen Zuständen der Mütter sind
  möglicherweise charakteristisch für das vorliegende Krankheitsbild.
- Aus diesem Grund wurde die Zustandsänderungsraten der Mütter sowohl im
- stressfreien Zustand, als auch unter Stresseinwirkung ermittelt .
-\end_layout
-
-\begin_layout Standard
-\noindent
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-\noindent
-Das Programm staytime.py stellt für jede Dyade die Zustandsänderungsraten
- der Mutter vor und nach Einwirkung von Stress dar.
-\end_layout
-
-\end_inset
-
- Diese sind in Abbildung 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Zustandsänderungsrate-der-Mutter"
-
-\end_inset
-
- übereinander abgetragen.
+ Aus diesem Grund wurden die Zustandsänderungsraten der Mütter sowohl im
+ stressfreien Zustand, als auch unter Stresseinwirkung ermittelt.
  Weiterhin wurde ein Histogramm (Abb.
  
 \begin_inset CommandInset ref
@@ -716,12 +696,6 @@ Erstaunlicherweise hat dies einen Mittelwert bei -0,02, sodass die Änderungsrat
  sich im Mittel nicht merklich ändert.
  Das erkennt man auch in der oberen Abbildung, da die Anzahl der Messpunkte
  im oberen Bereich >0 der im unteren Bereich entspricht.
- Um zu überprüfen, ob die Clusterentstehung zufällig oder begründet ist,
- werden zufällig generierte Daten hinzugefügt.
- Diese sind durch Kreuze im Diagramm repräsentiert.
- Weiterhin wurde die Methode der Hierarchischen Clusterung auf die Messdaten
- angewandt.
- Die Anzahl der Klassen kann im Python Skript frei eingestellt werden.
  Ein Klassifikationsvorschlag ist in Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -730,7 +704,17 @@ reference "fig:Beispielklassifikation-der-Testd"
 \end_inset
 
  dargestellt.
- Die gefundenen Klassen werden auch auf der Konsole ausgegeben.
+ Um zu überprüfen, ob die Clusterentstehung zufällig oder begründet ist,
+ werden zufällig generierte Daten hinzugefügt.
+ Diese sind durch Kreuze im Diagramm repräsentiert.
+ Weiterhin wurde die Methode der Hierarchischen Clusterung auf die Messdaten
+ angewandt.
+ Gruppenzugehörigkeiten werden hier durch unterschiedlich gefärbte Kreise
+ um den jeweiligen Dyadenpunkt dargestellt.
+ Das Klassifikationsresultat wird außerdem auf der Konsole ausgegeben.
+ Die Anzahl der Klassen kann im Python Skript correl.py frei eingestellt
+ werden.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -770,7 +754,7 @@ name "fig:Beispielklassifikation-der-Testd"
 
 \end_inset
 
-Beispielklassifikation der Testdaten
+Beispielklassifikation der Testdaten nach Zustandsübergangsraten
 \end_layout
 
 \end_inset
@@ -897,7 +881,7 @@ status open
 \begin_inset Graphics
 	filename /home/john/git/Blicke/Bilder/HCCorrCoeff.png
 	lyxscale 10
-	scale 30
+	scale 40
 
 \end_inset
 
@@ -940,35 +924,43 @@ Dyadenklassifikation anhand der Maxima der Kreuzkorrelationsfunktion
 \end_layout
 
 \begin_layout Standard
-Die Kreuzkorrelationsfunktion trifft eine Aussage über den Synchronisationsgrad
- zwischen dem gestressten und dem ungestressten Zustand für unterschiedliche
- zeitliche Versetzungen.
- Bestimmt man die Position des Maximums in der näheren Umgebung 
-\begin_inset Formula $\tau=0$
-\end_inset
-
-, lassen sich Aussagen treffen über das Orientierungsverhalten von Mutter
- und Kind.
- Bei angenommener Korrelation würde 
-\begin_inset Formula $\tau<0$
-\end_inset
-
- eine Verhaltungsanpassung der Mutter an das Kind bedeuten mit Reaktionszeit
- 
+Geht man davon aus, dass sich das Verhalten eines Dyadenmitglieds abhängig
+ zum Dyadenpartner erst nach einer bestimmten Reaktionszeit ändert, ist
+ der Korrelationskoeffizient eher ungeeignet.
+ Angebracht ist die Berechnung der Korrelationsfunktion der Zeitreihen.
+ Hiermit lässt sich zum einen die Reaktionszeit 
 \begin_inset Formula $\tau$
 \end_inset
 
-.
- In diesem Fall wurden die Dyaden anhand dieser Muster mit Hilfe der hierarchisc
-hen Clusterung gruppiert.
- Das Ergebnis ist in Abbildung 
+ bestimmen als auch der Fehler aufgrund des zeitlichen Versatzes der Dyaden
+ weitestgehend minimieren.
+ In Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Dyadenklassifikation-anhand"
 
 \end_inset
 
- dargestellt.
+ sind die 
+\begin_inset Formula $\tau$
+\end_inset
+
+ Werte für den ungestressten und gestressten Zustand des Korrelationsmaximum
+ im Bereich 
+\begin_inset Formula $\left[-100,100\right]\entspricht\left[-4s,4s\right]$
+\end_inset
+
+ abgetragen.
+ Außerdem sind in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Dyadenklassifikation-anhand-glob"
+
+\end_inset
+
+ die Y Werte der Korrelationsmaxima dargestellt.
+ In beiden Fällen wurden die Resultate mit der hierarchischen Clusterung
+ klassifiziert.
 \end_layout
 
 \begin_layout Standard
@@ -1009,7 +1001,58 @@ name "fig:Dyadenklassifikation-anhand"
 
 \end_inset
 
-Dyadenklassifikation anhand lokalem XCorr Maximum
+Dyadenklassifikation anhand globalem XCorr Maximum
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename /home/john/git/Blicke/Bilder/HC_XCorr_MaxY_Values.png
+	lyxscale 10
+	scale 60
+	rotateAngle -90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Dyadenklassifikation-anhand-glob"
+
+\end_inset
+
+Dyadenklassifikation anhand globalem XCorr Maximalwert
 \end_layout
 
 \end_inset
@@ -1062,7 +1105,7 @@ heinlichkeiten gebildet, die Übergangsmatrix durch Abzählen und Einordnen
 .
  Durch Erzeugung von Zufallszahlen kann damit der Zufallsprozess simuliert
  werden.
- Das Ergebnis für die Dyade 10 ist in Abbildung 
+ Das Ergebnis für die Dyade 288 ist in Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Darstellung-gemessene-Zeitreihe"
@@ -1174,6 +1217,11 @@ Darstellung simulierte Zeitreihe von Dyade 288
 
 \end_layout
 
+\begin_layout Standard
+Das Programm zur Generierung der Markov Ketten befindet sich in Markov.py.
+ Es wird über python Markov.py <dyaden_id> aufgerufen.
+\end_layout
+
 \begin_layout Section
 \noindent
 Auswertungsautomatisierung
@@ -1181,9 +1229,9 @@ Auswertungsautomatisierung
 
 \begin_layout Standard
 \noindent
-Weiterhin wurde eine grafische Benutzeroberfläche erstellt, mit der sich
- die vorgestellten Auswertungsmethoden auf eine selbst getroffene Auswahl
- an Dyaden anwenden lassen.
+Die Bedienung kann durch die entworfene grafische Benutzeroberfläche erfolgen,
+ mit der sich die vorgestellten Auswertungsmethoden auf eine selbst getroffene
+ Auswahl an Dyaden anwenden lassen.
  Durch einen Rechtsklick auf eine einzelne Dyade lassen sich die Zeitreihen
  und Kreuzkorrelationen der Dyaden darstellen.
  Die Optionen 
@@ -1355,17 +1403,7 @@ SVMs werden für die automatisierte Klassifizierung von Messdaten verwendet.
  Hierfür werden Testdaten mit bereits vorgenommener Klassifizierung eingelesen.
  Die Einordnung erfolgt durch Erzeugung von Hyperebenen im Zustandsraum
  in der Weise, dass der Abstand von Punkten mit unterschiedlichen Klassen
- maximal wird 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-NR
-\end_layout
-
-\end_inset
-
-.
+ maximal wird.
  Durch Verwendung von entsprechenden Kernelfunktionen im höherdimensionalen
  Raum als der des Zustandsraums können sogar nichtlineare Trennungsmannigfaltigk
 eiten erzeugt werden.
@@ -1430,7 +1468,9 @@ reference "fig:Dyaden-Gruppen-ohne"
 \end_inset
 
 ) wurde ein Vorschlag entnommen und die SVM dementsprechend trainiert.
- Anschließend wurden die Lerndaten von der SVM klassifiziert.
+ Das SVM Programm befindet sich in SVM/SVM.py.
+ In Arrays werden die Dyadnnamen den entsprechenden Klassen zugeordnet.
+ Anschließend werden die Lerndaten von der SVM klassifiziert.
  
 \end_layout
 
@@ -1461,6 +1501,7 @@ Man erkennt deutlich, dass die Klassen mit geringer Mächtigkeit teilweise
  Der Vorteil zur HC Methode besteht vor allem darin, dass sehr große Datenmengen
  klassifiziert werden können, da der Lernprozess das Resultat durch die
  eingeführten Hyperebenen vollständig vorgibt.
+ 
 \end_layout
 
 \begin_layout Section

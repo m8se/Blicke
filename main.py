@@ -6,12 +6,14 @@ import tkFont
 from numpy.distutils.exec_command import exec_command
 import tkMessageBox
 sys.path.append("../")
+from thread import start_new_thread
 from DAO import DAO
 
 class App:
     
     list;
-    
+    def execCommandThreaded(self,arg):
+            start_new_thread(exec_command,(arg,))    
     def getCurrentStress(self):
         try:
             curSel=int(self.v.get())
@@ -51,18 +53,18 @@ class App:
     def showClusterProb(self):
         self.stress=self.getCurrentStress()
         if(self.stress!=None):
-            exec_command("python gruppen_darstellen.py '"+str(self.getSelectedDyads())+"' "+str(self.stress))
+            self.execCommandThreaded("python gruppen_darstellen.py '"+str(self.getSelectedDyads())+"' "+str(self.stress))
     def showClusterStaytime(self):
-        exec_command("python staytime.py '"+str(self.getSelectedDyads())+"'")
+        self.execCommandThreaded("python staytime.py '"+str(self.getSelectedDyads())+"'")
     def showClusterCorr(self):
-        exec_command("python correl/correl.py '"+str(self.getSelectedDyads())+"'")
+        self.execCommandThreaded("python correl/correl.py '"+str(self.getSelectedDyads())+"'")
     def showClusterXCorrAll(self):
-        exec_command("python xcorrel_all.py '"+str(self.getSelectedDyads())+"'")
+        self.execCommandThreaded("python xcorrel_all.py '"+str(self.getSelectedDyads())+"'")
     def showDyad(self):
         print "Aktuellle Dyade: "+str(self.getSelectedPopupDyad()+"' ")
-        exec_command("python vis_dyade.py "+str(self.ids[self.cur]))
+        self.execCommandThreaded("python vis_dyade.py "+str(self.ids[self.cur]))
     def showXCorr(self):
-        exec_command("python xcorrel.py "+str(self.ids[self.cur]))
+        self.execCommandThreaded("python xcorrel.py "+str(self.ids[self.cur]))
     def do_popup(self,event):
         # display the popup menu 
         self.cur=self.list.nearest(event.y)
@@ -74,7 +76,6 @@ class App:
     
     def __init__(self,master):
         # Alle Dyandennr. einlesen
-
         
         dao=DAO()
         self.ids=dao.id_lst
@@ -89,7 +90,7 @@ class App:
         f1.pack(pady=20)
         
         
-        l=Label(f1,text="Bitte waehlen Sie die auswertenden Dyaden:")
+        l=Label(f1,text="Bitte waehlen Sie die auszuwertenden Dyaden:")
         f = tkFont.Font(l,("Sans Serif",12))
         l.configure(font=f)
         l.pack()
@@ -135,8 +136,6 @@ class App:
         
         f5=LabelFrame(f2,text="Optionen")
         f5.pack(fill=BOTH,expand=1);
-        
-        print "Trololo"
         
         b_auf=Button(f5,text="Clusterung nach Aufenthaltswahrscheinlichkeit",command=self.showClusterProb)
         b_auf.pack(fill=BOTH,expand=1)
