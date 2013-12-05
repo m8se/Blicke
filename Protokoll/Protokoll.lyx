@@ -866,9 +866,6 @@ Histogramm der Korr.koeff.änderung.
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 placement H
 wide false
@@ -947,11 +944,68 @@ reference "fig:Dyadenklassifikation-anhand"
 
  Werte für den ungestressten und gestressten Zustand des Korrelationsmaximum
  im Bereich 
-\begin_inset Formula $\left[-100,100\right]\entspricht\left[-4s,4s\right]$
+\begin_inset Formula $\left[-100,100\right]\entspricht\left[-\text{4 Sekunden, 4 Sekunden}\right]$
 \end_inset
 
  abgetragen.
- Außerdem sind in Abbildung 
+ Ein positiver 
+\begin_inset Formula $\tau$
+\end_inset
+
+ Wert bedeutet eine Orientierung der Mutter an dem Verhalten des Kindes
+ und 
+\begin_inset Formula $\tau<0$
+\end_inset
+
+ Orientierung des Kindes an der Mutter.
+ So bedeutet ein Dyadenpunkt in der linken oberen Ecke des Diagramms eine
+ Orientierung des Kindes an der Mutter vor dem Stress und komplette Verhaltensum
+kehrung nach Stresseinwirkung, sodass sich die Mutter an dem Kind orientiert.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+% Mutti, // Kind, Berechnet wurde XCorr[K,M]=
+\end_layout
+
+\begin_layout Plain Layout
+1.
+ Bei vollst.
+ Korrelation 
+\begin_inset Formula $K\left(t\right)=M\left(t+\tau\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+2.
+ Dann ist 
+\begin_inset Formula $M\left(t\right)$
+\end_inset
+
+ um 
+\begin_inset Formula $\tau$
+\end_inset
+
+ nach rechts verschoben, im Vergleich zu K
+\end_layout
+
+\begin_layout Plain Layout
+3.
+ Damit reagiert die Mutter auf das Kind
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Außerdem sind in Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Dyadenklassifikation-anhand-glob"
