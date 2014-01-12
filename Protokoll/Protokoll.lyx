@@ -274,10 +274,10 @@ key "key-2"
 \end_inset
 
 .
- Diese sind bei der bestehenden Problematik jedoch nicht ausreichend geeignet,
- da die oben genannten Forderung nur teilweise erfüllt werden.
- Aus diesem Grund wurde hier die Methode der hierarchischen Clusterung eingeführ
-t.
+ Zur Bestimmung geeignet erscheinender Gruppen greifen wir hier auf ein
+ Verfahren aus der Familie der hierarchischen Clusterungen [3] zurück.
+ Dabei wurde ein ein Single-Linkage Algorithmus mit einem euklidischen Abstandsm
+aß verwendet.
 \end_layout
 
 \begin_layout Standard
@@ -1614,6 +1614,18 @@ key "key-2"
 
  Bishop C., Pattern Recognition and Machine Learning, Springer Science +
  Business Media, New York, 2006
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-2"
+
+\end_inset
+
+Backhaus, Klaus; Erichson, Bernd; Weiber, Rolf.Fortgeschrittene multivariante
+ Analysemethoden, 2.überarbeitete und erweiterte Ausgabe,Springer, 2013,
+ Berlin 
 \end_layout
 
 \end_body
