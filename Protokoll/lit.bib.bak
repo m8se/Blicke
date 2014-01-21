@@ -1,0 +1,31 @@
+% This file was created with JabRef 2.9.2.
+% Encoding: UTF-8
+
+@BOOK{FMA,
+  title = {Fortgeschrittene multivariate Analysemethoden},
+  publisher = {Springer},
+  year = {2013},
+  author = {K. Backhaus and B. Erichson and R. Weiber},
+  edition = {2.},
+  owner = {john},
+  timestamp = {2014.01.16}
+}
+
+@BOOK{PCML,
+  title = {Pattern Recognition and Machine Learning},
+  publisher = {Springer Science + Business Media},
+  year = {2006},
+  author = {C. Bishop},
+  owner = {john},
+  timestamp = {2014.01.16}
+}
+
+@BOOK{NR,
+  title = {Numerical Recipes 3rd Edition},
+  publisher = {Cambridge University Press},
+  year = {2007},
+  author = {S. Teukolsky and W. Vetterlin and B. Flannery},
+  owner = {john},
+  timestamp = {2014.01.16}
+}
+

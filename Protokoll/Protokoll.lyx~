@@ -138,6 +138,16 @@ status open
 
 \backslash
 newpage
+\backslash
+hyphenation{Aufent-halts-wahr-schein-lich-keit}
+\backslash
+newcommand{
+\backslash
+entspricht}{
+\backslash
+mathrel{
+\backslash
+widehat{=}}}
 \end_layout
 
 \end_inset
@@ -222,7 +232,7 @@ Die Aufenthaltswahrscheinlichkeiten einer Zeitreihe können einen Ortsvektor
 \begin_inset Formula $\vec{P}$
 \end_inset
 
- im 16-dimesnionalen P-Raum definieren 
+ im 16-dimensionalen P-Raum definieren 
 \begin_inset Formula $P_{i}=P(z_{i})$
 \end_inset
 
@@ -232,6 +242,17 @@ Die Aufenthaltswahrscheinlichkeiten einer Zeitreihe können einen Ortsvektor
 \end_inset
 
  Vektor eine relevante Aussage über die Dyade trifft.
+ 
+\end_layout
+
+\begin_layout Standard
+Analog zu dieser Herangehensweise lässt sich aus einer Kombination von gestresst
+en und nicht gestressten Aufenthaltswahrscheinlichkeiten ein 32-dimensionaler
+ 
+\begin_inset Formula $P^{\prime}$
+\end_inset
+
+-Raum definieren.
  
 \end_layout
 
@@ -245,6 +266,18 @@ Ziel der hier definierten Methode ist es, die Dyaden in hierarchisch ineinander
  eine Gruppe kann jeweils eine oder mehrere Untergruppen enthalten.
  Um die Komplexität des Ergebnisses zu begrenzen, soll eine Überlappung
  verschiedener Gruppen vermieden werden.
+ Es gibt verschiedene Methoden der Clusterung.
+ Zur Bestimmung geeignet erscheinender Gruppen greifen wir hier auf ein
+ Verfahren aus der Familie der hierarchischen Clusterungen
+\begin_inset CommandInset citation
+LatexCommand cite
+key "FMA"
+
+\end_inset
+
+ zurück.
+ Dabei wurde ein ein Single-Linkage Algorithmus mit einem euklidischen Abstandsm
+aß verwendet.
 \end_layout
 
 \begin_layout Standard
@@ -261,7 +294,7 @@ Als Kriterium für die Ähnlichkeit zweier
 \begin_inset Formula $\vec{P}(y)$
 \end_inset
 
- wird hier mit der euklidischen Norm definiert.
+ wird hier mit der euklidischen Metrik definiert.
  
 \begin_inset Formula 
 \[
@@ -396,15 +429,14 @@ C_{4}=\{1,2,3,4\}
 \end_layout
 
 \begin_layout Standard
-Da 
 \begin_inset Formula $C_{1}$
 \end_inset
 
-
+entspricht 
 \begin_inset Formula $C_{3}$
 \end_inset
 
-entspricht, würde man für die vier Punkte 3 unterschiedliche Cluster erhalten,
+ und somit würde man für die vier Punkte 3 unterschiedliche Cluster erhalten,
  wobei 
 \begin_inset Formula $C_{1}$
 \end_inset
@@ -417,7 +449,7 @@ entspricht, würde man für die vier Punkte 3 unterschiedliche Cluster erhalten,
 \begin_inset Formula $C_{4}$
 \end_inset
 
-ist.
+ ist.
 \end_layout
 
 \begin_layout Standard
@@ -443,7 +475,7 @@ status open
 
 
 \begin_inset Graphics
-	filename C:/home/john/Dropbox/cp13/Kind-Mutti/CP/Blicke/Bilder/hir_c_1.png
+	filename ../Bilder/hir_c_1.png
 	lyxscale 10
 	scale 35
 
@@ -456,7 +488,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename C:/home/john/Dropbox/cp13/Kind-Mutti/CP/Blicke/Bilder/hir_c_2.png
+	filename ../Bilder/hir_c_2.png
 	lyxscale 10
 	scale 35
 
@@ -464,7 +496,7 @@ status open
 
 
 \begin_inset Graphics
-	filename C:/home/john/Dropbox/cp13/Kind-Mutti/CP/Blicke/Bilder/hir_c_3.png
+	filename ../Bilder/hir_c_3.png
 	lyxscale 10
 	scale 35
 
@@ -519,7 +551,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename C:/Bilder/stress0spektrumschnitt.png
+	filename ../Bilder/stress0spektrumschnitt.png
 	lyxscale 10
 	scale 45
 
@@ -562,7 +594,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename C:/Bilder/stress1spektrumschnitt.png
+	filename ../Bilder/stress1spektrumschnitt.png
 	lyxscale 10
 	scale 45
 
@@ -594,160 +626,17 @@ An dieser Stelle kann die Hypothese, dass die Cluster medizinische Muster
  
 \end_layout
 
-\begin_layout Subsection
-\noindent
-Klassifikation mithilfe der SVM Methode
-\end_layout
-
-\begin_layout Standard
-Hat man mithilfe bereits bestehender Zeitreihen Dyaden in Gruppen eingeteilt,
- so ist es von Interesse, neue Dyden den bereits gebildeten Gruppen zuordnen
- zu können.
- Ein Methode, die sich hierfür anbietet ist die Support Vector Machine (SVM).
- 
-\end_layout
-
-\begin_layout Standard
-\noindent
-SVMs werden für die automatisierte Klassifizierung von Messdaten verwendet.
- Hierfür werden Testdaten mit bereits vorgenommener Klassifizierung eingelesen.
- Die Einordnung erfolgt durch Erzeugung von Hyperebenen im Zustandsraum
- in der Weise, dass der Abstand von Punkten mit unterschiedlichen Klassen
- maximal wird 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-NR
-\end_layout
-
-\end_inset
-
-.
- Durch Verwendung von entsprechenden Kernelfunktionen im höherdimensionalen
- Raum als der des Zustandsraums können sogar nichtlineare Trennungsmannigfaltigk
-eiten erzeugt werden.
- Für die Umsetzung wurde die Python Bibliothek scikit-learn verwendet.
- Um sich die Möglichkeiten von SVM vorzustellen, sei hier ein Beispiel dargestel
-lt.
-\end_layout
-
-\begin_layout Standard
-\noindent
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename C:/home/john/Dropbox/cp13/Kind-Mutti/CP/Blicke/jons_stuff/SVM/ex.png
-	lyxscale 20
-	scale 30
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Klassifikationsbeispiel mit SVM
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-Hierbei besteht der Vektorraum aus 2 Komponenten und jeder Datenpunkt kann
- in eine der 3 Klassen eingeordnet werden.
- Diese Methode wurde auf unsere Daten angewendet.
- Hierzu ein Beispiel:
-\end_layout
-
-\begin_layout Standard
-\noindent
-Aus dem obigen Klassifikationsspektrum wurde ein Vorschlag entnommen und
- die SVM dementsprechend trainiert.
- Anschließend wurden die Lerndaten von der SVM klassifiziert.
- 
-\end_layout
-
-\begin_layout Standard
-Der Klassifikationsvorschlag mit der HC Methode:
-\end_layout
-
-\begin_layout Standard
-\align center
-[1 1 1 2 2 2 2 2 2 3 3 4 4 5 5 6 6 6 6 6 6 6 6 6 6 6 6 6 6 7 7 7 7 7 7 7
- 7 7 7 7 7 7 7 7 7 7]
-\end_layout
-
-\begin_layout Standard
-Die SVM liefert nach entsprechendem Training:
-\end_layout
-
-\begin_layout Standard
-\align center
-[1 1 1 2 2 6 2 2 2 6 6 7 7 6 7 7 6 6 6 6 6 6 6 6 6 6 6 6 6 7 7 7 7 7 7 7
- 7 7 7 7 7 7 7 7 7 7] 
-\end_layout
-
-\begin_layout Standard
-Man erkennt deutlich, dass die Klassen mit geringer Mächtigkeit teilweise
- nicht mehr besetzt sind.
- Dies ließe sich jedoch mit entsprechender Gewichtung der Klassen optimieren.
- Der Vorteil zur HC Methode besteht vor allem darin, dass sehr große Datenmengen
- klassifiziert werden können, da der Lernprozess das Resultat durch die
- eingeführten Hyperebenen vollständig vorgibt.
-\end_layout
-
 \begin_layout Section
 \noindent
-Untersuchung der Zustandsänderungsraten
+Dyadenklassifikation nach Zustandsänderungsraten
 \end_layout
 
 \begin_layout Standard
 Die Häufigkeiten des Wechsels zwischen einzelnen Zuständen der Mütter sind
  möglicherweise charakteristisch für das vorliegende Krankheitsbild.
- Aus diesem Grund wurde die Zustandsänderungsraten der Mütter sowohl im
- strssfreien Zustand, als auch unter Stresseinwirkung ermittelt .
-\end_layout
-
-\begin_layout Standard
-\noindent
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-\noindent
-Das Programm staytime.py stellt für jede Dyade die Zustandsänderungsraten
- der Mutter vor und nach Einwirkung von Stress dar.
-\end_layout
-
-\end_inset
-
- Diese sind in Abbildung 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Zustandsänderungsrate-der-Mutter"
-
-\end_inset
-
- übereinander abgetragen.
- Weiterhin wurde ein Histogramm [Abb.
+ Aus diesem Grund wurden die Zustandsänderungsraten der Mütter sowohl im
+ stressfreien Zustand, als auch unter Stresseinwirkung ermittelt.
+ Weiterhin wurde ein Histogramm (Abb.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -755,7 +644,7 @@ reference "fig:Histogramm-der-Änderung"
 
 \end_inset
 
-] für die absolute Änderung der Änderungsrate erzeugt.
+) für die absolute Änderung der Änderungsrate erzeugt.
 \end_layout
 
 \begin_layout Standard
@@ -769,9 +658,9 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/home/john/Dropbox/cp13/Kind-Mutti/CP/Blicke/jons_stuff/HistZustAend.png
+	filename ../Bilder/HistZustAend.png
 	lyxscale 10
-	scale 40
+	scale 59
 
 \end_inset
 
@@ -807,12 +696,6 @@ Erstaunlicherweise hat dies einen Mittelwert bei -0,02, sodass die Änderungsrat
  sich im Mittel nicht merklich ändert.
  Das erkennt man auch in der oberen Abbildung, da die Anzahl der Messpunkte
  im oberen Bereich >0 der im unteren Bereich entspricht.
- Um zu überprüfen, ob die Clusterentstehung zufällig oder begründet ist,
- werden zufällig generierte Daten hinzugefügt.
- Diese sind durch Kreuze im Diagramm repräsentiert.
- Weiterhin wurde die Methode der Hierarchischen Clusterung auf die Messdaten
- angewandt.
- Die Anzahl der Klassen kann im Python Skript frei eingestellt werden.
  Ein Klassifikationsvorschlag ist in Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -821,54 +704,17 @@ reference "fig:Beispielklassifikation-der-Testd"
 \end_inset
 
  dargestellt.
- Die gefundenen Klassen werden auch auf der Konsole ausgegeben.
-\end_layout
-
-\begin_layout Standard
-\noindent
-\begin_inset Newpage newpage
-\end_inset
-
-
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename C:/home/john/Dropbox/cp13/Kind-Mutti/CP/Blicke/jons_stuff/ZustAendergRateVorNach.png
-	lyxscale 20
-	scale 40
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Zustandsänderungsrate-der-Mutter"
-
-\end_inset
-
-Zustandsänderungsrate der Mutter vor und nach Stresseinwirkung
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
+ Um zu überprüfen, ob die Clusterentstehung zufällig oder begründet ist,
+ werden zufällig generierte Daten hinzugefügt.
+ Diese sind durch Kreuze im Diagramm repräsentiert.
+ Weiterhin wurde die Methode der Hierarchischen Clusterung auf die Messdaten
+ angewandt.
+ Gruppenzugehörigkeiten werden hier durch unterschiedlich gefärbte Kreise
+ um den jeweiligen Dyadenpunkt dargestellt.
+ Das Klassifikationsresultat wird außerdem auf der Konsole ausgegeben.
+ Die Anzahl der Klassen kann im Python Skript correl.py frei eingestellt
+ werden.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -889,7 +735,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/home/john/Dropbox/cp13/Kind-Mutti/CP/Blicke/jons_stuff/stytmsklsfkt.png
+	filename ../Bilder/stytmsklsfkt.png
 	lyxscale 10
 	scale 40
 
@@ -908,7 +754,7 @@ name "fig:Beispielklassifikation-der-Testd"
 
 \end_inset
 
-Beispielklassifikation der Testdaten
+Beispielklassifikation der Testdaten nach Zustandsübergangsraten
 \end_layout
 
 \end_inset
@@ -930,7 +776,7 @@ Beispielklassifikation der Testdaten
 
 \begin_layout Section
 \noindent
-Untersuchung der Korrelationskoeffizienten vor und nach Stresseinwirkung
+Dyadenklassifikation anhand der Korrelationskoeffizienten der Zeitreihen
 \end_layout
 
 \begin_layout Standard
@@ -942,7 +788,7 @@ Für jede Dyade wurden die Korrelationskoeffizienten zwischen Mutter und
  Das Ergebnis ist in Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Korr.koeff.-von-MuK"
+reference "fig:Klassifikation-nach-Korrelation"
 
 \end_inset
 
@@ -961,6 +807,15 @@ reference "fig:Histogramm-der-Korr.koeff.änderu"
  Es zeigt sich damit wieder keine deutliche Veränderung der Messgröße.
  Ein Klassifikationsvorschlag ist nun die Dyaden in 2 Gruppen einzuteilen,
  je nach dem Vorzeichen des Korr.koeffizienten.
+ Es kann wieder eine Klassifikation mit der HC Methode vorgenommen werden.
+ Das Ergebnis ist in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Klassifikation-nach-Korrelation"
+
+\end_inset
+
+ dargestellt.
 \end_layout
 
 \begin_layout Standard
@@ -974,7 +829,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/home/john/Dropbox/cp13/Kind-Mutti/CP/Blicke/jons_stuff/correl/HistAendKorr.png
+	filename ../Bilder/HistAendKorr.png
 	lyxscale 10
 	scale 45
 
@@ -1001,6 +856,271 @@ Histogramm der Korr.koeff.änderung.
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename /home/john/git/Blicke/Bilder/HCCorrCoeff.png
+	lyxscale 10
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Klassifikation-nach-Korrelation"
+
+\end_inset
+
+Klassifikation nach Korrelation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\noindent
+Dyadenklassifikation anhand der Maxima der Kreuzkorrelationsfunktion
+\end_layout
+
+\begin_layout Standard
+Geht man davon aus, dass sich das Verhalten eines Dyadenmitglieds abhängig
+ zum Dyadenpartner erst nach einer bestimmten Reaktionszeit ändert, ist
+ der Korrelationskoeffizient eher ungeeignet.
+ Angebracht ist die Berechnung der Korrelationsfunktion der Zeitreihen.
+ Hiermit lässt sich zum einen die Reaktionszeit 
+\begin_inset Formula $\tau$
+\end_inset
+
+ bestimmen als auch der Fehler aufgrund des zeitlichen Versatzes der Dyaden
+ weitestgehend minimieren.
+ In Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Dyadenklassifikation-anhand"
+
+\end_inset
+
+ sind die 
+\begin_inset Formula $\tau$
+\end_inset
+
+ Werte für den ungestressten und gestressten Zustand des Korrelationsmaximum
+ im Bereich 
+\begin_inset Formula $\left[-100,100\right]\entspricht\left[-\text{4 Sekunden, 4 Sekunden}\right]$
+\end_inset
+
+ abgetragen.
+ Ein positiver 
+\begin_inset Formula $\tau$
+\end_inset
+
+ Wert bedeutet eine Orientierung der Mutter an dem Verhalten des Kindes
+ und 
+\begin_inset Formula $\tau<0$
+\end_inset
+
+ Orientierung des Kindes an der Mutter.
+ So bedeutet ein Dyadenpunkt in der linken oberen Ecke des Diagramms eine
+ Orientierung des Kindes an der Mutter vor dem Stress und komplette Verhaltensum
+kehrung nach Stresseinwirkung, sodass sich die Mutter an dem Kind orientiert.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+% Mutti, // Kind, Berechnet wurde XCorr[K,M]=
+\end_layout
+
+\begin_layout Plain Layout
+1.
+ Bei vollst.
+ Korrelation 
+\begin_inset Formula $K\left(t\right)=M\left(t+\tau\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+2.
+ Dann ist 
+\begin_inset Formula $M\left(t\right)$
+\end_inset
+
+ um 
+\begin_inset Formula $\tau$
+\end_inset
+
+ nach rechts verschoben, im Vergleich zu K
+\end_layout
+
+\begin_layout Plain Layout
+3.
+ Damit reagiert die Mutter auf das Kind
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Außerdem sind in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Dyadenklassifikation-anhand-glob"
+
+\end_inset
+
+ die Y Werte der Korrelationsmaxima dargestellt.
+ In beiden Fällen wurden die Resultate mit der hierarchischen Clusterung
+ klassifiziert.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename /home/john/git/Blicke/Bilder/HC_XCorr.png
+	lyxscale 10
+	scale 50
+	rotateAngle -90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Dyadenklassifikation-anhand"
+
+\end_inset
+
+Dyadenklassifikation anhand globalem XCorr Maximum
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename /home/john/git/Blicke/Bilder/HC_XCorr_MaxY_Values.png
+	lyxscale 10
+	scale 60
+	rotateAngle -90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Dyadenklassifikation-anhand-glob"
+
+\end_inset
+
+Dyadenklassifikation anhand globalem XCorr Maximalwert
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
 \end_inset
 
 
@@ -1039,7 +1159,7 @@ heinlichkeiten gebildet, die Übergangsmatrix durch Abzählen und Einordnen
 .
  Durch Erzeugung von Zufallszahlen kann damit der Zufallsprozess simuliert
  werden.
- Das Ergebnis für die Dyade 10 ist in Abbildung 
+ Das Ergebnis für die Dyade 288 ist in Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Darstellung-gemessene-Zeitreihe"
@@ -1072,61 +1192,10 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename C:/home/john/Dropbox/cp13/Kind-Mutti/CP/Blicke/jons_stuff/correl/correl.png
-	lyxscale 20
-	scale 40
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Korr.koeff.-von-MuK"
-
-\end_inset
-
-Korr.koeff.
- von MuK vor und nach Stresseinwirkung
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
 \noindent
 \align center
 \begin_inset Graphics
-	filename C:/home/john/Dropbox/cp13/Kind-Mutti/CP/Blicke/jons_stuff/Gemessene Dyade.png
+	filename ../Bilder/Gemessene Dyade.png
 	lyxscale 30
 	scale 50
 
@@ -1145,7 +1214,7 @@ name "fig:Darstellung-gemessene-Zeitreihe"
 
 \end_inset
 
-Darstellung gemessene Zeitreihe von Dyade 10
+Darstellung gemessene Zeitreihe von Dyade 288
 \end_layout
 
 \end_inset
@@ -1170,7 +1239,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename C:/home/john/Dropbox/cp13/Kind-Mutti/CP/Blicke/jons_stuff/Simulierte Dyade.png
+	filename ../Bilder/Simulierte Dyade.png
 	lyxscale 10
 	scale 50
 
@@ -1189,7 +1258,7 @@ name "fig:Darstellung-simulierte-Zeitreihe"
 
 \end_inset
 
-Darstellung simulierte Zeitreihe von Dyade 10
+Darstellung simulierte Zeitreihe von Dyade 288
 \end_layout
 
 \end_inset
@@ -1200,6 +1269,11 @@ Darstellung simulierte Zeitreihe von Dyade 10
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Das Programm zur Generierung der Markov Ketten befindet sich in Markov.py.
+ Es wird über python Markov.py <dyaden_id> aufgerufen.
 \end_layout
 
 \begin_layout Section
@@ -1209,17 +1283,194 @@ Auswertungsautomatisierung
 
 \begin_layout Standard
 \noindent
-Weiterhin wurde ein Tool erstellt, mit dem sich mit Übergabe der Dyadennummer
- die Zeitreihen von Mutter und Kind sowohl für vor als auch nach Stresseinfluss
- darstellen lassen.
- Ein Beispiel ist in Abbildung 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:"
+Die Bedienung kann durch die entworfene grafische Benutzeroberfläche erfolgen,
+ mit der sich die vorgestellten Auswertungsmethoden auf eine selbst getroffene
+ Auswahl an Dyaden anwenden lassen.
+ Durch einen Rechtsklick auf eine einzelne Dyade lassen sich die Zeitreihen
+ und Kreuzkorrelationen der Dyaden darstellen.
+ Die Optionen 
+\begin_inset Quotes eld
+\end_inset
+
+Stressfrei
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Gestresst
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Beide Typen
+\begin_inset Quotes erd
+\end_inset
+
+ und 
+\begin_inset Quotes eld
+\end_inset
+
+8x8
+\begin_inset Quotes erd
+\end_inset
+
+ haben lediglich Einfluss auf die Clusterung nach Aufenthaltswahrscheinlichkeite
+n.
+ Die Optionen 
+\begin_inset Quotes eld
+\end_inset
+
+Stressfrei
+\begin_inset Quotes erd
+\end_inset
+
+ und 
+\begin_inset Quotes eld
+\end_inset
+
+Gestresst
+\begin_inset Quotes erd
+\end_inset
+
+ sind selbsterklärend.
+ Für die Auswahl 
+\begin_inset Quotes eld
+\end_inset
+
+Beide Typen
+\begin_inset Quotes erd
+\end_inset
+
+ werden die gestressten und ungestressten Dyaden als unterschiedliche Dyaden
+ betrachtet und gemeinsam in Gruppen geclustert.
+ Aus Gründen der Übersicht sollte diese Methode lediglich auf eine kleine
+ Auswahl an Dyaden angewandt werden.
+ Mit der Option 
+\begin_inset Quotes eld
+\end_inset
+
+8x8
+\begin_inset Quotes erd
+\end_inset
+
+ werden aus einer Kombination aus gestressten und ungestressten Zuständen
+ 8x8 Räume gebildet, auf die die hierarchische Clusterung angewandt wird.
+ 
+\end_layout
+
+\begin_layout Standard
+Die Auswahlmöglichkeiten 
+\begin_inset Quotes eld
+\end_inset
+
+Clusterung nach Zustandsänderungsrate
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Clusterung nach Korrelationskoeffizient
+\begin_inset Quotes erd
+\end_inset
+
+ und 
+\begin_inset Quotes eld
+\end_inset
+
+Clusterung nach Kreuzkorrelation
+\begin_inset Quotes erd
+\end_inset
+
+ ermöglichen eine Clusterung der Ausgewählten Dyaden anhand der jeweiligen
+ Merkmale.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename /home/john/git/Blicke/Bilder/GUI.png
+	lyxscale 10
+	scale 30
 
 \end_inset
 
- dargestellt.
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Benutzeroberfläche zur Selektion und Auswertung von Dyaden
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\noindent
+Klassifikation mithilfe der SVM Methode
+\end_layout
+
+\begin_layout Standard
+Hat man mithilfe bereits bestehender Zeitreihen Dyaden in Gruppen eingeteilt,
+ so ist es von Interesse, neue Dyaden den bereits gebildeten Gruppen zuordnen
+ zu können.
+ Eine Methode, die sich hierfür anbietet, ist die der Support Vector Machines(SV
+M)
+\begin_inset CommandInset citation
+LatexCommand cite
+key "NR"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand cite
+key "PCML"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\noindent
+SVMs werden für die automatisierte Klassifizierung von Messdaten verwendet.
+ Hierfür werden Testdaten mit bereits vorgenommener Klassifizierung eingelesen.
+ Die Einordnung erfolgt durch Erzeugung von Hyperebenen im Zustandsraum
+ in der Weise, dass der Abstand von Punkten mit unterschiedlichen Klassen
+ maximal wird.
+ Durch Verwendung von entsprechenden Kernelfunktionen im höherdimensionalen
+ Raum als der des Zustandsraums können sogar nichtlineare Trennungsmannigfaltigk
+eiten erzeugt werden.
+ Für die Umsetzung wurde die Python Bibliothek scikit-learn verwendet.
+ Um sich die Möglichkeiten von SVM vorzustellen, sei hier ein Beispiel dargestel
+lt.
 \end_layout
 
 \begin_layout Standard
@@ -1233,7 +1484,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/home/john/Dropbox/cp13/Kind-Mutti/CP/Blicke/jons_stuff/Zeitreihe361.png
+	filename ../Bilder/ex.png
 	lyxscale 20
 	scale 30
 
@@ -1246,13 +1497,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:"
-
-\end_inset
-
-Darstellung der Zeitreihe für Dyade 361
+Klassifikationsbeispiel mit SVM
 \end_layout
 
 \end_inset
@@ -1267,65 +1512,57 @@ Darstellung der Zeitreihe für Dyade 361
 
 \begin_layout Standard
 \noindent
-Außerdem wird eine Kreuzkorrelations Funktion erstellt und abgebildet (Abb.
+Hierbei besteht der Vektorraum aus 2 Komponenten und jeder Datenpunkt kann
+ in eine der 3 farblich dargestellten Klassen eingeordnet werden.
+ Diese Methode wurde auf unsere Daten angewendet:
+\end_layout
+
+\begin_layout Standard
+\noindent
+Aus dem obigen Klassifikationsspektrum (s.
+ Abb.
  
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Cross-Correlation-für"
+reference "fig:Dyaden-Gruppen-ohne"
 
 \end_inset
 
-)
+) wurde ein Vorschlag entnommen und die SVM dementsprechend trainiert.
+ Das SVM Programm befindet sich in SVM/SVM.py.
+ In Arrays werden die Dyadnnamen den entsprechenden Klassen zugeordnet.
+ Anschließend werden die Lerndaten von der SVM klassifiziert.
+ 
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
+Der Klassifikationsvorschlag mit der HC Methode:
+\end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 \align center
-\begin_inset Graphics
-	filename C:/home/john/Dropbox/cp13/Kind-Mutti/CP/Blicke/jons_stuff/crossCorr361.png
-	lyxscale 20
-	scale 30
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Cross-Correlation-für"
-
-\end_inset
-
-Cross Correlation für Dyade 361
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
+[1 1 1 2 2 2 2 2 2 3 3 4 4 5 5 6 6 6 6 6 6 6 6 6 6 6 6 6 6 7 7 7 7 7 7 7
+ 7 7 7 7 7 7 7 7 7 7]
 \end_layout
 
 \begin_layout Standard
-\noindent
-Mit dieser lassen sich Aussagen über den Beziehungstyp von Mutter und Kind
- treffen, d.h.
- ob das Verhalten der Mutter dem des Kindes folgt oder umgekehrt, indem
- das Maximum der Funktion in der Nähe des Nullpunkts bestimmt wird.
+Die SVM liefert nach entsprechendem Training:
+\end_layout
+
+\begin_layout Standard
+\align center
+[1 1 1 2 2 6 2 2 2 6 6 7 7 6 7 7 6 6 6 6 6 6 6 6 6 6 6 6 6 7 7 7 7 7 7 7
+ 7 7 7 7 7 7 7 7 7 7] 
+\end_layout
+
+\begin_layout Standard
+Man erkennt deutlich, dass die Klassen mit geringer Mächtigkeit teilweise
+ nicht mehr besetzt sind.
+ Dies ließe sich jedoch mit entsprechender Gewichtung der Klassen optimieren.
+ Der Vorteil zur HC Methode besteht vor allem darin, dass sehr große Datenmengen
+ klassifiziert werden können, da der Lernprozess das Resultat durch die
+ eingeführten Hyperebenen vollständig vorgibt.
+ 
 \end_layout
 
 \begin_layout Section
@@ -1333,7 +1570,7 @@ Zusammenfassung
 \end_layout
 
 \begin_layout Standard
-Die aus den Beobachtungen der Dyaden gewonnen Zeitreihen boten eine Vielzahl
+Die aus den Beobachtungen der Dyaden gewonnen Zeitreihen bieten eine Vielzahl
  an Möglichkeiten der Clusterbildung.
  In dieser Arbeit wurde versucht durch Abstraktion wiederkehrende Muster
  zu entdecken.
@@ -1346,20 +1583,25 @@ Reihenfolge
 
 \end_inset
 
- Dabei hervorzuheben ist das hier entwickelte Verfahren der hierarchischen
- Clusterung.
+ Dabei hervorzuheben ist die hier vorgenommene Anpassung des hierarchischen
+ Clusterungs Algorithmus an das vorliegende Problem.
  Von großem Interesse bleibt die Frage, ob die mit diesem Verfahren gefundenen
  Gruppen reale Krankheitsbilder widerspiegeln.
- Sollte dem so sein, so ließen sich neue Zeitreihen mit einer recht hohen
- Genauigkeit wie oben gezeigt mithilfe von SVM Methoden bereits bekannten
- Krankheitsbildern zuordnen.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-ziemlich gut, etwas wenig
+ Für den Fall positiver Resultate lassen sich neue Zeitreihen mit einer
+ recht hohen Genauigkeit, wie oben gezeigt, mithilfe von SVM Methoden bereits
+ bekannten Krankheitsbildern zuordnen.
+ Letztendlich obliegt es jedoch Psychologen die gefundenen Resultate zu
+ bewerten.
+ Die medizinische Bedeutung der erzielten Ergebnisse lässt sich nicht anhand
+ der Rohdaten beurteilen.
 \end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintAll"
+bibfiles "lit"
+options "/home/john/Desktop/plaindin"
 
 \end_inset
 

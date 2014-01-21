@@ -266,16 +266,16 @@ Ziel der hier definierten Methode ist es, die Dyaden in hierarchisch ineinander
  eine Gruppe kann jeweils eine oder mehrere Untergruppen enthalten.
  Um die Komplexität des Ergebnisses zu begrenzen, soll eine Überlappung
  verschiedener Gruppen vermieden werden.
- Es gibt verschiedene Methoden der Clusterung
+ Es gibt verschiedene Methoden der Clusterung.
+ Zur Bestimmung geeignet erscheinender Gruppen greifen wir hier auf ein
+ Verfahren aus der Familie der hierarchischen Clusterungen
 \begin_inset CommandInset citation
 LatexCommand cite
-key "key-2"
+key "FMA"
 
 \end_inset
 
-.
- Zur Bestimmung geeignet erscheinender Gruppen greifen wir hier auf ein
- Verfahren aus der Familie der hierarchischen Clusterungen [3] zurück.
+ zurück.
  Dabei wurde ein ein Single-Linkage Algorithmus mit einem euklidischen Abstandsm
 aß verwendet.
 \end_layout
@@ -1443,7 +1443,14 @@ Hat man mithilfe bereits bestehender Zeitreihen Dyaden in Gruppen eingeteilt,
 M)
 \begin_inset CommandInset citation
 LatexCommand cite
-key "key-1"
+key "NR"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand cite
+key "PCML"
 
 \end_inset
 
@@ -1576,56 +1583,29 @@ Reihenfolge
 
 \end_inset
 
- Dabei hervorzuheben ist das hier entwickelte Verfahren der hierarchischen
- Clusterung.
+ Dabei hervorzuheben ist die hier vorgenommene Anpassung des hierarchischen
+ Clusterungs Algorithmus an das vorliegende Problem.
  Von großem Interesse bleibt die Frage, ob die mit diesem Verfahren gefundenen
  Gruppen reale Krankheitsbilder widerspiegeln.
- Für den Fall positiver Resultate, lassen sich neue Zeitreihen mit einer
- recht hohen Genauigkeit wie oben gezeigt mithilfe von SVM Methoden bereits
+ Für den Fall positiver Resultate lassen sich neue Zeitreihen mit einer
+ recht hohen Genauigkeit, wie oben gezeigt, mithilfe von SVM Methoden bereits
  bekannten Krankheitsbildern zuordnen.
  Letztendlich obliegt es jedoch Psychologen die gefundenen Resultate zu
  bewerten.
- Es besteht sowohl die Möglichkeit, dass Dyaden aufgrund nicht relevanter
- Eigenschaften als auch relevanter Eigenschaften einer Gruppe zugeordnet
- wurden.
- 
+ Die medizinische Bedeutung der erzielten Ergebnisse lässt sich nicht ausschließ
+lich aus den Rohdaten beurteilen.
 \end_layout
 
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "key-1"
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintAll"
+bibfiles "lit"
+options "/home/john/Desktop/plaindin"
 
 \end_inset
 
- Teukolsky S.,W.
- Vetterling, W.
- Press, B.
- Flannery, Numerical Recipes 3rd Edition, Cambridge University Press, New
- York, 2007
-\end_layout
 
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "key-2"
-
-\end_inset
-
- Bishop C., Pattern Recognition and Machine Learning, Springer Science +
- Business Media, New York, 2006
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "key-2"
-
-\end_inset
-
-Backhaus, Klaus; Erichson, Bernd; Weiber, Rolf.Fortgeschrittene multivariante
- Analysemethoden, 2.überarbeitete und erweiterte Ausgabe,Springer, 2013,
- Berlin 
 \end_layout
 
 \end_body
